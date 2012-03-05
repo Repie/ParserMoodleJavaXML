@@ -1,9 +1,15 @@
+package dcll.question;
+
 import java.util.ArrayList;
+
+import dcll.Quiz;
+import dcll.answer.Answer;
+import dcll.enumeration.QuestionType;
 
 
 
 public class Question {
-	//protected Question.QuestionType type;
+	protected Question.QuestionType type;
 	public String name;
 	//public Question.QuestionTextFormat format;
 	public String text;
