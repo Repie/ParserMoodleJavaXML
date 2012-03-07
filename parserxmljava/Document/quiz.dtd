@@ -1,0 +1,37 @@
+<!ELEMENT quiz (question+)>
+<!ELEMENT question (category?,name?,questiontext?,generalfeedback?,defaultgrade?,penalty?,hidden?,suffleanswers?,answer?,units?,dataset_definitions?,subquestion?,image?,image_base64?,single?,correctfeedback?,partiallycorrectfeedback?,incorrectfeedback?,answernumbering?,usecase?)>
+<!ATTLIST question type #REQUIRED>
+
+<!ELEMENT category (text)>
+<!ELEMENT name (text)>
+<!ELEMENT questiontext (text)>
+<!ATTLIST questiontext format #REQUIRED>
+
+<!ELEMENT generalfeedback (text)>
+<!ELEMENT defaultgrade (#PCDATA) >
+<!ELEMENT penalty (#PCDATA) >
+<!ELEMENT hidden (#PCDATA) >
+<!ELEMENT suffleanswers (#PCDATA) >
+<!ELEMENT answer (text?,tolerance?,tolerancetype?,correctanswerformat?,correctanswerlenght?,feedback) >
+<!ATTLIST answer fraction #REQUIRED>
+<!ELEMENT units (unit+) >
+<!ELEMENT dataset_definitions (dataset_definition+) >
+<!ELEMENT subquestion (text,answer) >
+<!ELEMENT image (#PCDATA) >
+<!ELEMENT image_base64 (#PCDATA) >
+<!ELEMENT correctfeedback (text) >
+<!ELEMENT partiallycorrectfeedback (text) >
+<!ELEMENT incorrectfeedback (text) >
+<!ELEMENT answernumbering (#PCDATA) >
+<!ELEMENT usecase (#PCDATA) >
+
+<!ELEMENT text (#PCDATA) >
+<!ELEMENT unit (multiplier,unit_name) >
+<!ELEMENT tolerance (#PCDATA) >
+<!ELEMENT tolerancetype(#PCDATA) >
+<!ELEMENT correctanswerformat(#PCDATA) >
+<!ELEMENT correctanswerlenght(#PCDATA) >
+<!ELEMENT feedback (text) >
+<!ELEMENT dataset_definition (#PCDATA) >
+<!ELEMENT multiplier (#PCDATA) >
+<!ELEMENT unit_name (#PCDATA) >
