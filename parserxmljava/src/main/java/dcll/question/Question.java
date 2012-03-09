@@ -2,9 +2,9 @@ package dcll.question;
 
 import java.util.ArrayList;
 
-import dcll.Quiz;
 import dcll.answer.Answer;
 import dcll.enumeration.QuestionType;
+import dcll.quiz.Quiz;
 
 
 

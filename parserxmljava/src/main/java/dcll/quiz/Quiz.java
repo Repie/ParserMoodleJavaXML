@@ -1,4 +1,4 @@
-package dcll;
+package dcll.quiz;
 import java.util.ArrayList;
 
 import dcll.question.Question;
