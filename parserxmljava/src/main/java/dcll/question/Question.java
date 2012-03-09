@@ -53,7 +53,7 @@ public abstract class Question implements Parser{
 		q_text.addContent(e_text);
 		q.addContent(q_text);
 		
-		for(Answer a : answers)
+		for(Answer a : answers) //normalement il faut au moins une answer (sinon exeption ?)
 			q.addContent(a.parse());
 			
 		return q;

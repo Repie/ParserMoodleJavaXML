@@ -1,10 +1,9 @@
 package dcll.quiz;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import org.jdom.Document;
 import org.jdom.Element;
-
-import dcll.interfaces.Parser;
 import dcll.question.Question;
 
 
@@ -13,10 +12,14 @@ public class Quiz{
 	
 	public Document parse(){
 		//Creating the xml document with quiz as the root element
-		Document doc = new Document(new Element("quiz"));
+		Element quiz = new Element("quiz");
 		
-		return doc;
+		for(Question q : questions)
+			quiz.addContent(q.parse());
+		
+		return new Document(quiz);
 	}
+
 }
 
 /*Pour créer le fichier xml :

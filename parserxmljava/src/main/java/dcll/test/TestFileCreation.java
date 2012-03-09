@@ -2,7 +2,6 @@ package dcll.test;
 
 import java.io.IOException;
 
-import org.jdom.Document;
 import org.jdom.output.XMLOutputter;
 
 import dcll.quiz.Quiz;
@@ -14,20 +13,15 @@ public class TestFileCreation {
 	 */
 	public static void main(String[] args) {
 		Quiz qtest = new Quiz();
-		Document doc = qtest.parse();
+		XMLOutputter outputter = new XMLOutputter();
 		
-		
-		XMLOutputter serializer = new XMLOutputter();
 		try {
-		  //serializer.setIndent("  "); // use two space indent
-		  //serializer.setNewlines(true); 
-
-			serializer.output(doc, System.out);       
+			outputter.output(qtest.parse(), System.out);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		catch (IOException e) {
-		  System.err.println(e);
-		}
-
+		
 	}
 
 }
