@@ -1,3 +1,4 @@
+package dcll;
 public interface APIParserMoodleJavaXML {
 	
 	Quiz parse (String filename);
