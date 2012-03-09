@@ -9,9 +9,9 @@ import dcll.enumeration.QuestionType;
 
 
 public class Question {
-	protected Question.QuestionType type;
+	protected QuestionType type;
 	public String name;
-	//public Question.QuestionTextFormat format;
+	//public QuestionTextFormat format;
 	public String text;
 	public ArrayList<Answer> answers;
 	public Quiz Unnamed1;
