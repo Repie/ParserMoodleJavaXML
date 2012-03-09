@@ -1,7 +1,14 @@
 package dcll.question;
 
+import dcll.enumeration.QuestionType;
+
 
 
 public class Matching extends Question {
-	public boolean suffleAnswer;
+	protected boolean suffleAnswer;
+	
+	public Matching(){
+		super();
+		type = QuestionType.MULTICHOICE;
+	}
 }

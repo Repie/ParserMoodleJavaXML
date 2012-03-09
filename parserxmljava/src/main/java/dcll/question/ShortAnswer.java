@@ -1,5 +1,12 @@
 package dcll.question;
 
+import dcll.enumeration.QuestionType;
+
 public class ShortAnswer extends Question {
-	public boolean usecase;
+	protected boolean usecase;
+	
+	public ShortAnswer(){
+		super();
+		type = QuestionType.SHORTANSWER;
+	}
 }

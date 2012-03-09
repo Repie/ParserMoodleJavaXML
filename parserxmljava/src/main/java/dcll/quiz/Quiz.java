@@ -12,8 +12,8 @@ public class Quiz{
 	protected ArrayList<Question> questions;
 	
 	public Document parse(){
-		Document doc = new Document();
-		doc.setRootElement(new Element("quiz"));
+		//Creating the xml document with quiz as the root element
+		Document doc = new Document(new Element("quiz"));
 		
 		return doc;
 	}

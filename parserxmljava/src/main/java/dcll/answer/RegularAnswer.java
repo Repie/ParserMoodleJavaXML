@@ -3,6 +3,6 @@ package dcll.answer;
 
 
 public class RegularAnswer extends Answer {
-	public int fraction;
-	public String feedback;
+	protected int fraction;
+	protected String feedback;
 }
