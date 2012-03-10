@@ -14,7 +14,7 @@ import dcll.interfaces.Parser;
 public abstract class Question implements Parser{
 	protected QuestionType type;
 	protected String text;
-	protected ArrayList<Answer> answers;
+	protected ArrayList<? extends Answer> answers;
 	protected String name;
 	protected QuestionTextFormat format = QuestionTextFormat.HTML;
 	
@@ -26,14 +26,16 @@ public abstract class Question implements Parser{
 		this.format = format;
 	}
 	
-	public Question(String text, ArrayList<Answer> answers) {
+	public Question(String text, ArrayList<Answer> answers, String name) {
 		super();
 		this.text = text;
 		this.answers = answers;
-		this.name = new String();
+		this.name = name;
 	}
 
-	
+	public String toString(){
+		return (name + " [" + type.toString().toLowerCase() + "]");
+	}
 	
 	public Element parse(){
 		Element q = new Element("question");

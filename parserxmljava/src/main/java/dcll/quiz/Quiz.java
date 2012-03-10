@@ -19,7 +19,7 @@ public class Quiz{
 		
 		return new Document(quiz);
 	}
-
+	
 }
 
 /*Pour créer le fichier xml :
