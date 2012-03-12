@@ -1,0 +1,28 @@
+<!-- malformed XML : attribute value without quotes in tag <answer> -->
+<?xml version="1.0" ?>
+<quiz>
+ <question type="category">
+    <category>
+        <text>$course$/XXXX</text>
+    </category>
+</question>
+<question type="multichoice">
+ <!-- XML error is here -->
+ <answer fraction=100>
+ <!-- XML error is here -->
+     <text>The correct answer</text>
+    <feedback><text>Correct!</text></feedback>
+ </answer>
+ <answer fraction="0">
+     <text>A distractor</text>
+    <feedback><text>Ooops!</text></feedback>
+ </answer>
+ <answer fraction="0">
+     <text>Another distractor</text>
+    <feedback><text>Ooops!</text></feedback>
+ </answer>
+ <shuffleanswers>1</shuffleanswers>
+ <single>true</single>
+ <answernumbering>abc</answernumbering>
+ </question>
+</quiz>
