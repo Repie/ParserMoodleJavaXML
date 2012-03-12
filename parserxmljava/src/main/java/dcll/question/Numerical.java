@@ -22,6 +22,9 @@ public class Numerical extends Question{
 	}
 	
 	public void verifyIsNumerical() throws MalformedQuestionException{
+		if(!this.hasOnlyOneCorrectAnswer())
+			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
+		
 		for(Answer a : answers){
 			try{
 				Integer.parseInt(a.getText());

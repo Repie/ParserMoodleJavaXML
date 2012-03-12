@@ -32,6 +32,8 @@ public class Essay extends Question {
 			throw new MalformedQuestionException("Answer's text must be empty", this);
 		else if(firstAnswer.getFraction() == 0)
 			throw new MalformedQuestionException("Answer's fraction must be 0", this);
+		else if(!this.hasOnlyOneCorrectAnswer())
+			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 	}
 
 	

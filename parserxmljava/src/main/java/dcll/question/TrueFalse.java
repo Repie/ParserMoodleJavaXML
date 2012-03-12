@@ -28,6 +28,8 @@ public class TrueFalse extends Question {
 	public void verifIsTrueFalse() throws MalformedQuestionException{
 		if(answers.size() != 2)
 			throw new MalformedQuestionException("Must have exactly 2 answers", this);
+		else if(!this.hasOnlyOneCorrectAnswer())
+			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		else{
 			int firstFraction = ((RegularAnswer)answers.get(0)).getFraction();
 			int secondFraction = ((RegularAnswer)answers.get(1)).getFraction();

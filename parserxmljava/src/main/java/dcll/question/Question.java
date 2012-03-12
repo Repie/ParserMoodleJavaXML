@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.jdom.Element;
 
 import dcll.answer.Answer;
+import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
 import dcll.interfaces.Parser;
@@ -35,6 +36,24 @@ public abstract class Question implements Parser{
 
 	public String toString(){
 		return (name + " [" + type.toString().toLowerCase() + "]");
+	}
+	
+	public boolean hasOnlyOneCorrectAnswer(){
+		boolean hundredFraction = false;
+		
+		for (int i = 0; i < answers.size(); i++){
+			int fraction = ((RegularAnswer)answers.get(i)).getFraction();
+			
+			if(fraction == 100){
+				if (hundredFraction)
+					return false;
+				else
+					hundredFraction = true;
+			}
+				
+		}
+		
+		return true;
 	}
 	
 	public Element parse(){
