@@ -12,7 +12,7 @@ import dcll.interfaces.Parser;
 
 
 
-public abstract class Question implements Parser{
+public abstract class Question implements Parser, Verifier{
 	protected QuestionType type;
 	protected String text;
 	protected ArrayList<? extends Answer> answers;
