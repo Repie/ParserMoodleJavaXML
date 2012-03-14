@@ -7,5 +7,6 @@ public enum QuestionType {
 	MATCHING,
 	ESSAY,
 	NUMERICAL,
-	DESCRIPTIION
+	DESCRIPTIION, 
+	COZE
 }
