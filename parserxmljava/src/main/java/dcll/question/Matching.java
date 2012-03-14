@@ -9,6 +9,7 @@ import dcll.answer.RegularAnswer;
 import dcll.answer.Subquestion;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
+import dcll.exception.MalformedQuestionException;
 
 
 
@@ -43,6 +44,10 @@ public class Matching extends Question {
 		e.addContent(e_shuffle);
 		
 		return e;
+	}
+
+	public void verify() throws MalformedQuestionException {
+		
 	}
 
 }

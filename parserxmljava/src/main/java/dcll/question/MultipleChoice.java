@@ -7,6 +7,7 @@ import org.jdom.Element;
 import dcll.answer.Answer;
 import dcll.enumeration.AnswerNumberingType;
 import dcll.enumeration.QuestionType;
+import dcll.exception.MalformedQuestionException;
 
 
 
@@ -39,6 +40,10 @@ public class MultipleChoice extends Question {
 		e_parent.addContent(e_anb);
 		
 		return e_parent;
+	}
+
+	public void verify() throws MalformedQuestionException {
+		
 	}
 
 }

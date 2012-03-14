@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 import org.jdom.Element;
 
-import dcll.answer.Answer;
-import dcll.answer.RegularAnswer;
-import dcll.enumeration.QuestionTextFormat;
-import dcll.enumeration.QuestionType;
-import dcll.interfaces.Parsable;
+
+import dcll.answer.*;
+import dcll.enumeration.*;
+import dcll.interfaces.*;
 
 
 
