@@ -25,6 +25,7 @@ public class MultipleChoice extends Question {
 		verify();
 	}
 	
+	
 	public MultipleChoice(String text, ArrayList<Answer> answers, String name,
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, String correctAnswer,
