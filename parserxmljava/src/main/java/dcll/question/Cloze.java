@@ -9,14 +9,18 @@ import dcll.exception.MalformedQuestionException;
 
 public class Cloze extends Question {
 
-	public Cloze(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) {
+	public Cloze(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.CLOZE;
+		
+		verify();
 	}
 
-	public Cloze(String text, ArrayList<Answer> answers, String name) {
+	public Cloze(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		this.type = QuestionType.CLOZE;
+		
+		verify();
 	}
 
 	public void verify() throws MalformedQuestionException {

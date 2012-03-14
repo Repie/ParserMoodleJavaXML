@@ -9,15 +9,20 @@ import dcll.exception.MalformedQuestionException;
 
 
 public class Description extends Question {
+	
 
-	public Description(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) {
+	public Description(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.DESCRIPTIION;
+		
+		verify();
 	}
 
-	public Description(String text, ArrayList<Answer> answers, String name) {
+	public Description(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		this.type = QuestionType.DESCRIPTIION;
+		
+		verify();
 	}
 
 	public void verify() throws MalformedQuestionException {
