@@ -16,16 +16,16 @@ public class TrueFalse extends Question {
 	public TrueFalse(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		type = QuestionType.TRUEFALSE;
-		verifIsTrueFalse();
+		verify();
 	}
 
 	public TrueFalse(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		type = QuestionType.TRUEFALSE;
-		verifIsTrueFalse();
+		verify();
 	}
 	
-	public void verifIsTrueFalse() throws MalformedQuestionException{
+	public void verify() throws MalformedQuestionException{
 		if(answers.size() != 2)
 			throw new MalformedQuestionException("Must have exactly 2 answers", this);
 		else if(!this.hasOnlyOneCorrectAnswer())

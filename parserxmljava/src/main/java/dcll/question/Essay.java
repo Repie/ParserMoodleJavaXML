@@ -14,16 +14,16 @@ public class Essay extends Question {
 	public Essay(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.ESSAY;
-		verifyIsEssay();
+		verify();
 	}
 
 	public Essay(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		this.type = QuestionType.ESSAY;
-		verifyIsEssay();
+		verify();
 	}
 	
-	public void verifyIsEssay() throws MalformedQuestionException{
+	public void verify() throws MalformedQuestionException{
 		RegularAnswer firstAnswer = (RegularAnswer) answers.get(0);
 		
 		if(answers.size() == 1)

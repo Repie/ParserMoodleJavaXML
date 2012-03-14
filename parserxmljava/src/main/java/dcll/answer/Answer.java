@@ -1,9 +1,9 @@
 package dcll.answer;
 
-import dcll.interfaces.Parser;
+import dcll.interfaces.Parsable;
 
 
-public abstract class Answer implements Parser{
+public abstract class Answer implements Parsable{
 	protected String text;
 
 	public Answer(String text){

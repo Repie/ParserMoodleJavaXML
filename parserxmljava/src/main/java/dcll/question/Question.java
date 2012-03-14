@@ -8,11 +8,11 @@ import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
-import dcll.interfaces.Parser;
+import dcll.interfaces.Parsable;
 
 
 
-public abstract class Question implements Parser, Verifier{
+public abstract class Question implements Parsable, Verifier{
 	protected QuestionType type;
 	protected String text;
 	protected ArrayList<? extends Answer> answers;
@@ -55,8 +55,11 @@ public abstract class Question implements Parser, Verifier{
 		
 		return true;
 	}
-	
 	public Element parse(){
+		return parse(true);
+	}
+	
+	public Element parse(boolean parseAnswer){
 		Element q = new Element("question");
 		q.setAttribute("type", type.toString().toLowerCase());
 		
@@ -74,8 +77,10 @@ public abstract class Question implements Parser, Verifier{
 		q_text.addContent(e_text);
 		q.addContent(q_text);
 		
-		for(Answer a : answers) //normalement il faut au moins une answer (sinon exeption ?)
-			q.addContent(a.parse());
+		if(parseAnswer){
+			for(Answer a : answers) //normalement il faut au moins une answer (sinon exeption ?)
+				q.addContent(a.parse());
+		}
 			
 		return q;
 	}

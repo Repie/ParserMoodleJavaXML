@@ -2,7 +2,7 @@ package dcll.interfaces;
 
 import org.jdom.Element;
 
-public interface Parser {
+public interface Parsable {
 	Element parse();
 
 }
