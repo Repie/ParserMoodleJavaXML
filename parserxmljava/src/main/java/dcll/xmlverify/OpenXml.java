@@ -6,6 +6,7 @@ import java.io.IOException;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
+
 public class OpenXml {
 
 	private File xmlFile;
@@ -35,11 +36,11 @@ public class OpenXml {
 		}
 	}
 	
-	/*public static void main(String[] args ){
+/*	public static void main(String[] args ){
 		
 		OpenXml op=new OpenXml("Documents\\quizExamples\\quizExample_1.xml");
-		System.out.println(op.isXmlWellFormed());
+		op.open();
 		System.out.println(op.document.toString());
-	} */
-	
+	} 
+	*/
 }

@@ -1,4 +1,3 @@
-<!-- malformed Quiz :  tag <question> without required attribute "type" -->
 <?xml version="1.0" ?>
 <quiz>
  <question type="category">

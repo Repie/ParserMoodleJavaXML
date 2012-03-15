@@ -1,4 +1,3 @@
-<!-- malformed XML : attribute value without quotes in tag <answer> -->
 <?xml version="1.0" ?>
 <quiz>
  <question type="category">
