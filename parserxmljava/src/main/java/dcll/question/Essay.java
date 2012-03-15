@@ -23,6 +23,7 @@ public class Essay extends Question {
 		verify();
 	}
 	
+	
 	public void verify() throws MalformedQuestionException{
 		RegularAnswer firstAnswer = (RegularAnswer) answers.get(0);
 		

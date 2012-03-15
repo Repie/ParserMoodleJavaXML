@@ -5,7 +5,7 @@ import org.jdom.Element;
 
 
 public class RegularAnswer extends Answer {
-	protected int fraction;
+	protected float fraction;
 	protected String feedback;
 	
 	public RegularAnswer(String text, int fraction, String feedback) {
@@ -32,7 +32,7 @@ public class RegularAnswer extends Answer {
 		this.feedback = new String();
 	}
 	
-	public int getFraction() {
+	public float getFraction() {
 		return fraction;
 	}
 
@@ -57,7 +57,5 @@ public class RegularAnswer extends Answer {
 		
 		return a;
 	}
-
-
 
 }

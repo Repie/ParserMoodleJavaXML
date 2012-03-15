@@ -31,8 +31,8 @@ public class TrueFalse extends Question {
 		else if(!this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		else{
-			int firstFraction = ((RegularAnswer)answers.get(0)).getFraction();
-			int secondFraction = ((RegularAnswer)answers.get(1)).getFraction();
+			float firstFraction = ((RegularAnswer)answers.get(0)).getFraction();
+			float secondFraction = ((RegularAnswer)answers.get(1)).getFraction();
 			
 			if ((firstFraction == 0 && secondFraction == 100) || (firstFraction == 100 && secondFraction == 0))
 				throw new MalformedQuestionException("Fraction must be 0 and 100 only", this);

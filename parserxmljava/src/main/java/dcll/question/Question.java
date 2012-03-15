@@ -13,10 +13,13 @@ import dcll.interfaces.*;
 
 public abstract class Question implements Parsable, Verifier{
 	protected QuestionType type;
-	protected String text;
+	protected String text, name, generalFeedback;
 	protected ArrayList<? extends Answer> answers;
-	protected String name;
 	protected QuestionTextFormat format = QuestionTextFormat.HTML;
+	protected int defaultGrade, hidden;
+	protected float penalty;
+	
+	//ajouter un constructeur pour les nouvelles balises
 	
 	public Question(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) {
 		super();
@@ -24,6 +27,10 @@ public abstract class Question implements Parsable, Verifier{
 		this.answers = answers;
 		this.name = name;
 		this.format = format;
+		generalFeedback = new String();
+		defaultGrade = 1;
+		hidden = 0;
+		penalty = 0;
 	}
 	
 	public Question(String text, ArrayList<Answer> answers, String name) {
@@ -31,6 +38,10 @@ public abstract class Question implements Parsable, Verifier{
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
+		generalFeedback = new String();
+		defaultGrade = 1;
+		hidden = 0;
+		penalty = 0;
 	}
 
 	public String toString(){
@@ -40,7 +51,7 @@ public abstract class Question implements Parsable, Verifier{
 	public Question(String text, String name, QuestionTextFormat format) {
 		super();
 		this.text = text;
-		this.answers = new ArrayList<? extends Answer>();
+		this.answers = new ArrayList<Answer>();
 		this.name = name;
 		this.format = format;
 	}
@@ -48,7 +59,7 @@ public abstract class Question implements Parsable, Verifier{
 	public Question(String text, String name) {
 		super();
 		this.text = text;
-		this.answers = new ArrayList<? extends Answer>();
+		this.answers = new ArrayList<Answer>();
 		this.name = name;
 	}
 	
@@ -60,10 +71,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.answers.addAll(answers);
 	}
 
-	public String toString(){
-		return (name + " [" + type.toString().toLowerCase() + "]");
-	}
-	
 	public boolean hasOnlyOneCorrectAnswer(){
 		boolean hundredFraction = false;
 		
@@ -104,6 +111,24 @@ public abstract class Question implements Parsable, Verifier{
 		Element e_text = new Element("text").setText(text);
 		q_text.addContent(e_text);
 		q.addContent(q_text);
+		
+		if(!generalFeedback.isEmpty()){
+			Element e_gfeed = new Element("generalfeedback");
+			Element e_gfeed_text = new Element("text").setText(generalFeedback);
+			e_gfeed.addContent(e_gfeed_text);
+			q.addContent(e_gfeed);
+		}
+		
+		Element e_grade = new Element("defaultgrade").setText(String.valueOf(defaultGrade));
+		q.addContent(e_grade);
+		
+		Element e_penalty = new Element("penalty").setText(String.valueOf(penalty));
+		q.addContent(e_penalty);
+		
+		Element e_hidden = new Element("hidden").setText(String.valueOf(penalty));
+		q.addContent(e_hidden);
+		
+		
 		
 		if(parseAnswer){
 			for(Answer a : answers) //normalement il faut au moins une answer (sinon exeption ?)

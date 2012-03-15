@@ -8,11 +8,11 @@ import org.jdom.output.XMLOutputter;
 public class QuizWriter {	
 	protected Quiz quiz;
 	
-	public Quiz(){
+	public QuizWriter(){
 		quiz = new Quiz();
 	}
 	
-	public Quiz(Quiz q){
+	public QuizWriter(Quiz q){
 		quiz = q;
 	}
 	
