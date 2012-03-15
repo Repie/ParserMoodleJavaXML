@@ -1,4 +1,3 @@
-<!-- basic xml quiz example -->
 <?xml version="1.0" ?>
 <quiz>
  <question type="category">

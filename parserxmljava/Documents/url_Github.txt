@@ -1,0 +1,2 @@
+URL github du groupe : Julien Lebeau, William Ferraguti , Pierre Rigaud
+https://github.com/JuLink/ParserMoodleJavaXML
