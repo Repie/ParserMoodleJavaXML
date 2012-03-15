@@ -29,7 +29,7 @@ public abstract class Question implements Parsable, Verifier{
 		this.name = name;
 		this.format = format;
 		generalFeedback = new String();
-		defaultGrade = 1;
+		defaultGrade = 0;
 		hidden = 0;
 		penalty = 0;
 		
@@ -42,7 +42,7 @@ public abstract class Question implements Parsable, Verifier{
 		this.answers = answers;
 		this.name = name;
 		generalFeedback = new String();
-		defaultGrade = 1;
+		defaultGrade = 0;
 		hidden = 0;
 		penalty = 0;
 		
@@ -69,6 +69,40 @@ public abstract class Question implements Parsable, Verifier{
 		verify();
 	}
 	
+	public Question(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super();
+		this.type = type;
+		this.text = text;
+		this.name = name;
+		this.generalFeedback = generalFeedback;
+		this.answers = answers;
+		this.format = format;
+		this.defaultGrade = defaultGrade;
+		this.penalty = penalty;
+		this.hidden = hidden;
+		
+		verify();
+	}
+	
+	public Question(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super();
+		this.type = type;
+		this.text = text;
+		this.name = name;
+		this.generalFeedback = generalFeedback;
+		this.answers = answers;
+		this.defaultGrade = defaultGrade;
+		this.penalty = penalty;
+		this.hidden = hidden;
+		
+		verify();
+	}
+
 	public String toString(){
 		return (name + " [" + type.toString().toLowerCase() + "]");
 	}
