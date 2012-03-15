@@ -2,8 +2,8 @@ package dcll.interfaces;
 
 import dcll.quiz.Quiz;
 
-public interface APIParserMoodleJavaXML {
+public interface Xmltojava {
 	
 	Quiz parse (String filename);
-	void parse(Quiz q, String filname);
+
 }
