@@ -37,6 +37,33 @@ public abstract class Question implements Parsable, Verifier{
 		return (name + " [" + type.toString().toLowerCase() + "]");
 	}
 	
+	public Question(String text, String name, QuestionTextFormat format) {
+		super();
+		this.text = text;
+		this.answers = new ArrayList<? extends Answer>();
+		this.name = name;
+		this.format = format;
+	}
+	
+	public Question(String text, String name) {
+		super();
+		this.text = text;
+		this.answers = new ArrayList<? extends Answer>();
+		this.name = name;
+	}
+	
+	public void addAnswer(Answer a){
+		answers.add(a);
+	}
+	
+	public void addAnswers(ArrayList<? extends Answer> answers){
+		this.answers.addAll(answers);
+	}
+
+	public String toString(){
+		return (name + " [" + type.toString().toLowerCase() + "]");
+	}
+	
 	public boolean hasOnlyOneCorrectAnswer(){
 		boolean hundredFraction = false;
 		
@@ -70,7 +97,9 @@ public abstract class Question implements Parsable, Verifier{
 		}
 		
 		Element q_text = new Element("questiontext");
-		q_text.setAttribute("format", format.toString().toLowerCase());
+		
+		if(!format.equals(QuestionTextFormat.NONE))
+			q_text.setAttribute("format", format.toString().toLowerCase());
 		
 		Element e_text = new Element("text").setText(text);
 		q_text.addContent(e_text);

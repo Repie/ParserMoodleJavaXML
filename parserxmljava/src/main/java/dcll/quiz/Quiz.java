@@ -1,16 +1,31 @@
 package dcll.quiz;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import org.jdom.Document;
 import org.jdom.Element;
 
 import dcll.interfaces.Parsable;
 import dcll.question.Question;
 
 
+
 public class Quiz implements Parsable{
 	protected ArrayList<Question> questions;
+	
+	public Quiz(){
+		questions = new ArrayList<Question>();
+	}
+	
+	public Quiz(ArrayList<Question> questions){
+		this.questions = questions;
+	}
+	
+	public void addQuestions(Question q){
+		questions.add(q);
+	}
+	
+	public void addQuestion(ArrayList<Question> questions){
+		this.questions.addAll(questions);
+	}
 	
 	public Element parse(){
 		//Creating the xml document with quiz as the root element
@@ -23,15 +38,3 @@ public class Quiz implements Parsable{
 	}
 	
 }
-
-/*Pour créer le fichier xml :
-XMLOutputter outputter = new XMLOutputter();
-try {
-  serializer.setIndent("  "); // use two space indent
-  serializer.setNewlines(true); 
-
-  outputter.output(doc, System.out);       
-}
-catch (IOException e) {
-  System.err.println(e);
-}*/
