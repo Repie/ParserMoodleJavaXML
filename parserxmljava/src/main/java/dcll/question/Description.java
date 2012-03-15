@@ -26,7 +26,8 @@ public class Description extends Question {
 	}
 
 	public void verify() throws MalformedQuestionException {
-		
+		if(format.equals(QuestionTextFormat.NONE))
+			throw new MalformedQuestionException("Question text format is void, use Cloze question in this case", this);
 	}
 	
 }

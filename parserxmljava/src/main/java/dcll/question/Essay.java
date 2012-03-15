@@ -34,6 +34,8 @@ public class Essay extends Question {
 			throw new MalformedQuestionException("Answer's fraction must be 0", this);
 		else if(!this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
+		else if(format.equals(QuestionTextFormat.NONE))
+			throw new MalformedQuestionException("Question text format is void, use Cloze question in this case", this);
 	}
 
 	
