@@ -3,6 +3,7 @@ package dcll.quiz;
 import java.io.IOException;
 
 import org.jdom.Document;
+import org.jdom.Element;
 import org.jdom.output.XMLOutputter;
 
 public class QuizWriter {	
@@ -30,6 +31,10 @@ public class QuizWriter {
 	
 	public void write(){
 		write(generateDocument());
+	}
+	
+	public static void write(Element e){
+		write(new Document(e));
 	}
 	
 	public static void write(Document doc){

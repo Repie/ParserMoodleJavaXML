@@ -8,6 +8,8 @@ import dcll.enumeration.QuestionType;
 import dcll.exception.MalformedQuestionException;
 
 public class Cloze extends Question {
+	
+	//question text ?
 
 	public Cloze(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);

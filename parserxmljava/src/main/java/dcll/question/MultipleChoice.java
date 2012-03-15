@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.jdom.Element;
 
-import dcll.answer.Answer;
+import dcll.answer.RegularAnswer;
 import dcll.enumeration.AnswerNumberingType;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -18,7 +18,7 @@ public class MultipleChoice extends Question {
 	protected AnswerNumberingType answerNumbering;
 	protected String correctAnswer, partialAnswer, incorrectAnswer;
 	
-	public MultipleChoice(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
+	public MultipleChoice(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		type = QuestionType.MULTICHOICE;
 		
@@ -26,7 +26,7 @@ public class MultipleChoice extends Question {
 	}
 	
 	
-	public MultipleChoice(String text, ArrayList<Answer> answers, String name,
+	public MultipleChoice(String text, ArrayList<RegularAnswer> answers, String name,
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, String correctAnswer,
 			String partialAnswer, String incorrectAnswer) throws MalformedQuestionException {

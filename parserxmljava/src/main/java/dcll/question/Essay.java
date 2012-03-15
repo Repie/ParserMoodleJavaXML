@@ -2,7 +2,6 @@ package dcll.question;
 
 import java.util.ArrayList;
 
-import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -11,13 +10,13 @@ import dcll.exception.MalformedQuestionException;
 
 public class Essay extends Question {
 
-	public Essay(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
+	public Essay(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.ESSAY;
 		verify();
 	}
 
-	public Essay(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
+	public Essay(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		this.type = QuestionType.ESSAY;
 		verify();

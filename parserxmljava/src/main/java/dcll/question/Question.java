@@ -7,6 +7,7 @@ import org.jdom.Element;
 
 import dcll.answer.*;
 import dcll.enumeration.*;
+import dcll.exception.MalformedQuestionException;
 import dcll.interfaces.*;
 
 
@@ -16,12 +17,12 @@ public abstract class Question implements Parsable, Verifier{
 	protected String text, name, generalFeedback;
 	protected ArrayList<? extends Answer> answers;
 	protected QuestionTextFormat format = QuestionTextFormat.HTML;
-	protected int defaultGrade, hidden;
-	protected float penalty;
+	protected float defaultGrade, penalty;
+	protected int hidden;
 	
 	//ajouter un constructeur pour les nouvelles balises
 	
-	public Question(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) {
+	public Question(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = answers;
@@ -31,9 +32,11 @@ public abstract class Question implements Parsable, Verifier{
 		defaultGrade = 1;
 		hidden = 0;
 		penalty = 0;
+		
+		verify();
 	}
 	
-	public Question(String text, ArrayList<Answer> answers, String name) {
+	public Question(String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = answers;
@@ -42,40 +45,52 @@ public abstract class Question implements Parsable, Verifier{
 		defaultGrade = 1;
 		hidden = 0;
 		penalty = 0;
+		
+		verify();
 	}
 
+	
+	public Question(String text, String name, QuestionTextFormat format) throws MalformedQuestionException  {
+		super();
+		this.text = text;
+		this.answers = new ArrayList<Answer>();
+		this.name = name;
+		this.format = format;
+		
+		verify();
+	}
+	
+	public Question(String text, String name) throws MalformedQuestionException  {
+		super();
+		this.text = text;
+		this.answers = new ArrayList<Answer>();
+		this.name = name;
+		
+		verify();
+	}
+	
 	public String toString(){
 		return (name + " [" + type.toString().toLowerCase() + "]");
 	}
 	
-	public Question(String text, String name, QuestionTextFormat format) {
-		super();
-		this.text = text;
-		this.answers = new ArrayList<Answer>();
-		this.name = name;
-		this.format = format;
+	public void verify() throws MalformedQuestionException{
+		if(!(hidden == 0 || hidden == 1))
+			throw new MalformedQuestionException("Hidden must be either 0 or 1", this);
 	}
 	
-	public Question(String text, String name) {
-		super();
-		this.text = text;
-		this.answers = new ArrayList<Answer>();
-		this.name = name;
-	}
-	
-	public void addAnswer(Answer a){
+	/*public void addAnswer(Answer a){
 		answers.add(a);
 	}
 	
-	public void addAnswers(ArrayList<? extends Answer> answers){
+	public void addAnswers(ArrayList<Answer> answers){
 		this.answers.addAll(answers);
-	}
+	}*/
 
 	public boolean hasOnlyOneCorrectAnswer(){
 		boolean hundredFraction = false;
 		
 		for (int i = 0; i < answers.size(); i++){
-			int fraction = ((RegularAnswer)answers.get(i)).getFraction();
+			float fraction = ((RegularAnswer)answers.get(i)).getFraction();
 			
 			if(fraction == 100){
 				if (hundredFraction)

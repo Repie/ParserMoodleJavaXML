@@ -13,13 +13,13 @@ public class TrueFalse extends Question {
 	
 	//feedback opt
 
-	public TrueFalse(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
+	public TrueFalse(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		type = QuestionType.TRUEFALSE;
 		verify();
 	}
 
-	public TrueFalse(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
+	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		type = QuestionType.TRUEFALSE;
 		verify();
