@@ -2,6 +2,8 @@ package dcll.question;
 
 import java.util.ArrayList;
 
+
+import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -9,15 +11,35 @@ import dcll.exception.MalformedQuestionException;
 
 
 public class Essay extends Question {
+	
+	//constructeur avec une seule RegularAnswer ?
 
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.ESSAY;
 		verify();
 	}
+	
+	public Essay(String text, RegularAnswer answer, String name, QuestionTextFormat format) throws MalformedQuestionException {
+		super(text, name, format);
+		ArrayList<Answer> temp = new ArrayList<Answer>();
+		temp.add(answer);
+		this.answers = temp;
+		this.type = QuestionType.ESSAY;
+		verify();
+	}
 
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
+		this.type = QuestionType.ESSAY;
+		verify();
+	}
+	
+	public Essay(String text, RegularAnswer answer, String name) throws MalformedQuestionException {
+		super(text, name);
+		ArrayList<Answer> temp = new ArrayList<Answer>();
+		temp.add(answer);
+		this.answers = temp;
 		this.type = QuestionType.ESSAY;
 		verify();
 	}
