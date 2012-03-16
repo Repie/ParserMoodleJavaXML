@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 import org.jdom.Element;
 
+import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
 import dcll.exception.MalformedQuestionException;
 
 public class ShortAnswer extends Question {
+	
 	protected int usecase;
 
 	public ShortAnswer(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format, int usecase) throws MalformedQuestionException {
@@ -27,6 +29,20 @@ public class ShortAnswer extends Question {
 		
 		verify();
 	}
+	
+	public ShortAnswer(QuestionType type, String text, String name, int usecase,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		type = QuestionType.SHORTANSWER;
+		this.usecase = usecase;
+		
+		verify();
+	}
+
+
 
 	public void verify() throws MalformedQuestionException {
 		if(this.hasOnlyOneCorrectAnswer())

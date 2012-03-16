@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.jdom.Element;
 
+import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.AnswerNumberingType;
 import dcll.enumeration.QuestionTextFormat;
@@ -17,14 +18,6 @@ public class MultipleChoice extends Question {
 	protected boolean single;
 	protected AnswerNumberingType answerNumbering;
 	protected String correctAnswer, partialAnswer, incorrectAnswer;
-	
-	public MultipleChoice(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
-		super(text, answers, name);
-		type = QuestionType.MULTICHOICE;
-		
-		verify();
-	}
-	
 	
 	public MultipleChoice(String text, ArrayList<RegularAnswer> answers, String name,
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
@@ -42,6 +35,50 @@ public class MultipleChoice extends Question {
 		
 		verify();
 	}
+
+	public MultipleChoice(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, int shuffleAnswer, boolean single,
+			AnswerNumberingType answerNumbering, String correctAnswer,
+			String partialAnswer, String incorrectAnswer, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		
+		this.shuffleAnswer = shuffleAnswer;
+		this.single = single;
+		this.answerNumbering = answerNumbering;
+		this.correctAnswer = correctAnswer;
+		this.partialAnswer = partialAnswer;
+		this.incorrectAnswer = incorrectAnswer;
+		
+		type = QuestionType.MULTICHOICE;
+		
+		verify();
+	}
+	
+
+	public MultipleChoice(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, int shuffleAnswer, boolean single,
+			AnswerNumberingType answerNumbering, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		
+		this.shuffleAnswer = shuffleAnswer;
+		this.single = single;
+		this.answerNumbering = answerNumbering;
+		this.correctAnswer = new String("");
+		this.partialAnswer = new String("");
+		this.incorrectAnswer = new String("");
+		
+		type = QuestionType.MULTICHOICE;
+		
+		verify();
+	}
+	
+
 
 	public Element parse(){
 		Element e = super.parse();

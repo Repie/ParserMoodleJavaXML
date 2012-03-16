@@ -45,6 +45,16 @@ public class Essay extends Question {
 	}
 	
 	
+	public Essay(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		this.type = QuestionType.ESSAY;
+		verify();
+	}
+
 	public void verify() throws MalformedQuestionException{
 		RegularAnswer firstAnswer = (RegularAnswer) answers.get(0);
 		

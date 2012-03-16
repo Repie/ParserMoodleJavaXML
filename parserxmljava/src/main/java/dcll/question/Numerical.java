@@ -22,6 +22,25 @@ public class Numerical extends Question{
 		verify();
 	}
 	
+	public Numerical(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			float defaultGrade, float penalty, int hidden)
+			throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, defaultGrade, penalty, hidden);
+		this.type = QuestionType.NUMERICAL;
+		verify();
+	}
+
+	public Numerical(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		this.type = QuestionType.NUMERICAL;
+		verify();
+	}
+
 	public void verify() throws MalformedQuestionException{
 		if(!this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);

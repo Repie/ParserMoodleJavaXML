@@ -14,7 +14,6 @@ public class Description extends Question {
 	public Description(String text, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, new ArrayList<Answer>(), name, format);
 		this.type = QuestionType.DESCRIPTION;
-		
 		verify();
 	}
 
@@ -24,6 +23,33 @@ public class Description extends Question {
 		
 		verify();
 	}
+
+	public Description(QuestionType type, String text, String name, float defaultGrade,
+			float penalty, int hidden) throws MalformedQuestionException {
+		super(type, text, name, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
+		this.type = QuestionType.DESCRIPTION;
+		verify();
+	}
+
+	public Description(QuestionType type, String text, String name,
+			String generalFeedback,
+			float defaultGrade, float penalty, int hidden)
+			throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
+		this.type = QuestionType.DESCRIPTION;
+		verify();
+	}
+
+	public Description(QuestionType type, String text, String name,
+			String generalFeedback,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, new ArrayList<Answer>(), format, defaultGrade,
+				penalty, hidden);
+		this.type = QuestionType.DESCRIPTION;
+		verify();
+	}
+
 
 	public void verify() throws MalformedQuestionException {
 		if(!answers.isEmpty())

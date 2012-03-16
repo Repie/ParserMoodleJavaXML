@@ -36,7 +36,7 @@ public class CorrectQuestionCreation extends TestCase {
 		answers.add(new Subquestion("Tomcat", "Fondation Apache"));
 		
 		
-		Matching q = new Matching("Serveur d'application / éditeurs", answers, "Relier les serveurs d'applications avec les bons éditeurs",  QuestionTextFormat.MOODLE_AUTO_FORMAT, 1, 0.1, 0);
+		//Matching q = new Matching("Serveur d'application / éditeurs", answers, "Relier les serveurs d'applications avec les bons éditeurs",  QuestionTextFormat.MOODLE_AUTO_FORMAT, 1, 0.1, 0);
 	}
 
 }

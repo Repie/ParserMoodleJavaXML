@@ -23,13 +23,13 @@ public class RegularAnswer extends Answer {
 	public RegularAnswer(String text, int fraction) {
 		super(text);
 		this.fraction = fraction;
-		this.feedback = new String();
+		this.feedback = new String("");
 	}
 	
 	public RegularAnswer(String text, String fraction) {
 		super(text);
 		this.fraction = Integer.parseInt(fraction);
-		this.feedback = new String();
+		this.feedback = new String("");
 	}
 	
 	public float getFraction() {

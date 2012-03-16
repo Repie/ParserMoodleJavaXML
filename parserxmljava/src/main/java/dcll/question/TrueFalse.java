@@ -2,6 +2,7 @@ package dcll.question;
 
 import java.util.ArrayList;
 
+import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -18,8 +19,20 @@ public class TrueFalse extends Question {
 		verify();
 	}
 
+
+
 	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
+		type = QuestionType.TRUEFALSE;
+		verify();
+	}
+	
+	public TrueFalse(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
 		type = QuestionType.TRUEFALSE;
 		verify();
 	}
