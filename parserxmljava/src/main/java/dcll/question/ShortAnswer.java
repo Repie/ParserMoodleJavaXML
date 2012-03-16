@@ -45,6 +45,8 @@ public class ShortAnswer extends Question {
 
 
 	public void verify() throws MalformedQuestionException {
+		super.verify();
+		
 		if(this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Doesn't have multiple correct answers, don't use Shortanswer in this case", this);
 		

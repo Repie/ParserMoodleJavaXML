@@ -54,6 +54,8 @@ public class Essay extends Question {
 	}
 
 	public void verify() throws MalformedQuestionException{
+		super.verify();
+		
 		RegularAnswer firstAnswer = (RegularAnswer) answers.get(0);
 		
 		if(answers.size() != 1)

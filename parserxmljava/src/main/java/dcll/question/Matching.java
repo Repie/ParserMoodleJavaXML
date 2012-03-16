@@ -65,6 +65,7 @@ public class Matching extends Question {
 	}
 
 	public void verify() throws MalformedQuestionException {
+		super.verify();
 		
 	}
 

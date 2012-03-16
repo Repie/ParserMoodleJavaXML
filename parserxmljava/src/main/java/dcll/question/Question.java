@@ -29,8 +29,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.answers = answers;
 		this.name = name;
 		this.format = format;
-		
-		verify();
 	}
 	
 	public Question(String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException  {
@@ -38,8 +36,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
-		
-		verify();
 	}
 
 	
@@ -49,8 +45,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.answers = new ArrayList<Answer>();
 		this.name = name;
 		this.format = format;
-		
-		verify();
 	}
 	
 	public Question(String text, String name) throws MalformedQuestionException  {
@@ -58,8 +52,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.text = text;
 		this.answers = new ArrayList<Answer>();
 		this.name = name;
-		
-		verify();
 	}
 	
 	public Question(String text, String name,
@@ -75,8 +67,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.defaultGrade = defaultGrade;
 		this.penalty = penalty;
 		this.hidden = hidden;
-		
-		verify();
 	}
 	
 	public Question(String text, String name,
@@ -90,8 +80,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.defaultGrade = defaultGrade;
 		this.penalty = penalty;
 		this.hidden = hidden;
-		
-		verify();
 	}
 	
 	public Question(String text, String name, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
@@ -104,12 +92,16 @@ public abstract class Question implements Parsable, Verifier{
 		this.defaultGrade = defaultGrade;
 		this.penalty = penalty;
 		this.hidden = hidden;
-		
-		verify();
+	}
+	
+
+	public QuestionType getType(){
+		return type;
 	}
 
+
 	public String toString(){
-		return (name + " [" + type.toString().toLowerCase() + "]");
+		return (name);
 	}
 	
 	public void verify() throws MalformedQuestionException{

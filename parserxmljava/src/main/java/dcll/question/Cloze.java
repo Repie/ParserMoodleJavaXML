@@ -9,14 +9,14 @@ import dcll.exception.MalformedQuestionException;
 
 public class Cloze extends Question {
 	
-	public Cloze(String text, ArrayList<Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
+	public Cloze(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.CLOZE;
 		
 		verify();
 	}
 
-	public Cloze(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
+	public Cloze(String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		this.type = QuestionType.CLOZE;
 		this.format = QuestionTextFormat.NONE;
@@ -73,6 +73,8 @@ public class Cloze extends Question {
 	}
 
 	public void verify() throws MalformedQuestionException {
+		super.verify();
+		
 		if(!answers.isEmpty())
 			throw new MalformedQuestionException("Cloze must have no answer", this);
 		else if(!format.equals(QuestionTextFormat.NONE))

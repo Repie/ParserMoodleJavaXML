@@ -18,7 +18,6 @@ public class TrueFalse extends Question {
 	}
 
 
-
 	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		type = QuestionType.TRUEFALSE;
@@ -36,6 +35,8 @@ public class TrueFalse extends Question {
 	}
 	
 	public void verify() throws MalformedQuestionException{
+		super.verify();
+		
 		if(answers.size() != 2)
 			throw new MalformedQuestionException("Must have exactly 2 answers", this);
 		else if(!this.hasOnlyOneCorrectAnswer())
@@ -49,5 +50,6 @@ public class TrueFalse extends Question {
 			
 		}
 	}
+	
 	
 }

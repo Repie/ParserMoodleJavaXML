@@ -117,6 +117,7 @@ public class MultipleChoice extends Question {
 	}
 
 	public void verify() throws MalformedQuestionException {
+		super.verify();
 		
 		if(!(shuffleAnswer == 0 || shuffleAnswer == 1))
 			throw new MalformedQuestionException("Shuffle answer must be either 0 or 1", this);

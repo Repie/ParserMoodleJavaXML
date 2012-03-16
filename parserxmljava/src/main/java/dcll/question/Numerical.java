@@ -42,6 +42,9 @@ public class Numerical extends Question{
 	}
 
 	public void verify() throws MalformedQuestionException{
+		super.verify();
+		
+		
 		if(!this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		

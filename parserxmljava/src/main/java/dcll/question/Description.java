@@ -9,8 +9,6 @@ import dcll.exception.MalformedQuestionException;
 
 
 public class Description extends Question {
-	
-
 	public Description(String text, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, new ArrayList<Answer>(), name, format);
 		this.type = QuestionType.DESCRIPTION;
@@ -21,7 +19,7 @@ public class Description extends Question {
 		super(text, new ArrayList<Answer>(), name);
 		this.type = QuestionType.DESCRIPTION;
 		
-		verify();
+		this.verify();
 	}
 
 	public Description(String text, String name, float defaultGrade,
@@ -52,6 +50,8 @@ public class Description extends Question {
 
 
 	public void verify() throws MalformedQuestionException {
+		super.verify();
+		
 		if(!answers.isEmpty())
 			throw new MalformedQuestionException("Description must have no answer", this);
 		else if(format.equals(QuestionTextFormat.NONE))
