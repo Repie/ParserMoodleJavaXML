@@ -49,7 +49,7 @@ public class Essay extends Question {
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+		super( text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		this.type = QuestionType.ESSAY;
 		verify();

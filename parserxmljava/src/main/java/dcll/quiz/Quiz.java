@@ -19,11 +19,11 @@ public class Quiz implements Parsable{
 		this.questions = questions;
 	}
 	
-	public void addQuestions(Question q){
+	public void addQuestion(Question q){
 		questions.add(q);
 	}
 	
-	public void addQuestion(ArrayList<Question> questions){
+	public void addQuestions(ArrayList<Question> questions){
 		this.questions.addAll(questions);
 	}
 	

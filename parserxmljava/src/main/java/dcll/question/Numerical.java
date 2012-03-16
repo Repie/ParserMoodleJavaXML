@@ -26,7 +26,7 @@ public class Numerical extends Question{
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, defaultGrade, penalty, hidden);
+		super( text, name, generalFeedback, answers, defaultGrade, penalty, hidden);
 		this.type = QuestionType.NUMERICAL;
 		verify();
 	}
@@ -35,7 +35,7 @@ public class Numerical extends Question{
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+		super( text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		this.type = QuestionType.NUMERICAL;
 		verify();

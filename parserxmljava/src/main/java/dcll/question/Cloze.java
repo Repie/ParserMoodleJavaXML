@@ -19,6 +19,7 @@ public class Cloze extends Question {
 	public Cloze(String text, ArrayList<Answer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
 		this.type = QuestionType.CLOZE;
+		this.format = QuestionTextFormat.NONE;
 		
 		verify();
 	}
@@ -26,8 +27,9 @@ public class Cloze extends Question {
 	public Cloze(QuestionType type, String text, String name,
 			ArrayList<? extends Answer> answers, float defaultGrade,
 			float penalty, int hidden) throws MalformedQuestionException {
-		super(type, text, name, answers, defaultGrade, penalty, hidden);
+		super( text, name, answers, defaultGrade, penalty, hidden);
 		this.type = QuestionType.CLOZE;
+		this.format = QuestionTextFormat.NONE;
 		
 		verify();
 	}
@@ -36,17 +38,18 @@ public class Cloze extends Question {
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, defaultGrade, penalty, hidden);
+		super(text, name, generalFeedback, answers, defaultGrade, penalty, hidden);
 		this.type = QuestionType.CLOZE;
+		this.format = QuestionTextFormat.NONE;
 		
 		verify();
 	}
 
-	public Cloze(QuestionType type, String text, String name,
+	public Cloze(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+		super(text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		this.type = QuestionType.CLOZE;
 		
@@ -65,12 +68,14 @@ public class Cloze extends Question {
 	public Cloze(String text, String name) throws MalformedQuestionException {
 		super(text, name);
 		this.type = QuestionType.CLOZE;
-		
+		this.format = QuestionTextFormat.NONE;
 		verify();
 	}
 
 	public void verify() throws MalformedQuestionException {
-		if(!format.equals(QuestionTextFormat.NONE))
+		if(!answers.isEmpty())
+			throw new MalformedQuestionException("Cloze must have no answer", this);
+		else if(!format.equals(QuestionTextFormat.NONE))
 			throw new MalformedQuestionException("Question text format must be void", this);
 
 	}

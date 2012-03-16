@@ -26,7 +26,7 @@ public class Description extends Question {
 
 	public Description(QuestionType type, String text, String name, float defaultGrade,
 			float penalty, int hidden) throws MalformedQuestionException {
-		super(type, text, name, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
+		super( text, name, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
 		this.type = QuestionType.DESCRIPTION;
 		verify();
 	}
@@ -35,7 +35,7 @@ public class Description extends Question {
 			String generalFeedback,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
+		super( text, name, generalFeedback, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
 		this.type = QuestionType.DESCRIPTION;
 		verify();
 	}
@@ -44,7 +44,7 @@ public class Description extends Question {
 			String generalFeedback,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, new ArrayList<Answer>(), format, defaultGrade,
+		super( text, name, generalFeedback, new ArrayList<Answer>(), format, defaultGrade,
 				penalty, hidden);
 		this.type = QuestionType.DESCRIPTION;
 		verify();

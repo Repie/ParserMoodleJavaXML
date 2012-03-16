@@ -14,11 +14,12 @@ import dcll.interfaces.*;
 
 public abstract class Question implements Parsable, Verifier{
 	protected QuestionType type;
-	protected String text, name, generalFeedback;
+	protected String text, name, generalFeedback = new String("");
 	protected ArrayList<? extends Answer> answers;
 	protected QuestionTextFormat format = QuestionTextFormat.HTML;
-	protected float defaultGrade, penalty;
-	protected int hidden;
+	protected float defaultGrade = 0;
+	protected float penalty = 0;
+	protected int hidden = 0;
 	
 	//ajouter un constructeur pour les nouvelles balises dans les classes filles
 	
@@ -28,10 +29,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.answers = answers;
 		this.name = name;
 		this.format = format;
-		generalFeedback = new String("");
-		defaultGrade = 0;
-		hidden = 0;
-		penalty = 0;
 		
 		verify();
 	}
@@ -41,10 +38,6 @@ public abstract class Question implements Parsable, Verifier{
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
-		generalFeedback = new String("");
-		defaultGrade = 0;
-		hidden = 0;
-		penalty = 0;
 		
 		verify();
 	}
@@ -69,12 +62,11 @@ public abstract class Question implements Parsable, Verifier{
 		verify();
 	}
 	
-	public Question(QuestionType type, String text, String name,
+	public Question(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
 		super();
-		this.type = type;
 		this.text = text;
 		this.name = name;
 		this.generalFeedback = generalFeedback;
@@ -87,11 +79,10 @@ public abstract class Question implements Parsable, Verifier{
 		verify();
 	}
 	
-	public Question(QuestionType type, String text, String name,
+	public Question(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
 		super();
-		this.type = type;
 		this.text = text;
 		this.name = name;
 		this.generalFeedback = generalFeedback;
@@ -103,10 +94,9 @@ public abstract class Question implements Parsable, Verifier{
 		verify();
 	}
 	
-	public Question(QuestionType type, String text, String name, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
+	public Question(String text, String name, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
 		super();
-		this.type = type;
 		this.text = text;
 		this.name = name;
 		this.generalFeedback = new String("");

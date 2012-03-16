@@ -42,7 +42,7 @@ public class MultipleChoice extends Question {
 			AnswerNumberingType answerNumbering, String correctAnswer,
 			String partialAnswer, String incorrectAnswer, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+		super( text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		
 		this.shuffleAnswer = shuffleAnswer;
@@ -63,7 +63,7 @@ public class MultipleChoice extends Question {
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super(type, text, name, generalFeedback, answers, format, defaultGrade,
+		super( text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		
 		this.shuffleAnswer = shuffleAnswer;
