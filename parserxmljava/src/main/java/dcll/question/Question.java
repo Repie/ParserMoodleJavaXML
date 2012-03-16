@@ -20,7 +20,7 @@ public abstract class Question implements Parsable, Verifier{
 	protected float defaultGrade, penalty;
 	protected int hidden;
 	
-	//ajouter un constructeur pour les nouvelles balises
+	//ajouter un constructeur pour les nouvelles balises dans les classes filles
 	
 	public Question(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException  {
 		super();
@@ -174,7 +174,7 @@ public abstract class Question implements Parsable, Verifier{
 		Element e_penalty = new Element("penalty").setText(String.valueOf(penalty));
 		q.addContent(e_penalty);
 		
-		Element e_hidden = new Element("hidden").setText(String.valueOf(penalty));
+		Element e_hidden = new Element("hidden").setText(String.valueOf(hidden));
 		q.addContent(e_hidden);
 		
 		

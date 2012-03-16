@@ -9,9 +9,6 @@ public abstract class Answer implements Parsable{
 	public Answer(String text){
 		super();
 		
-		/*if(text.isEmpty())
-			throw new EmptyArgumentException("The text arg from Answer constructor is empty");*/
-		
 		this.text = text;
 	}
 

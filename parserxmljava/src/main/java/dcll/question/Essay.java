@@ -48,11 +48,11 @@ public class Essay extends Question {
 	public void verify() throws MalformedQuestionException{
 		RegularAnswer firstAnswer = (RegularAnswer) answers.get(0);
 		
-		if(answers.size() == 1)
+		if(answers.size() != 1)
 			throw new MalformedQuestionException("Must have only one answer", this);
-		else if(firstAnswer.getText().isEmpty())
+		else if(!firstAnswer.getText().isEmpty())
 			throw new MalformedQuestionException("Answer's text must be empty", this);
-		else if(firstAnswer.getFraction() == 0)
+		else if(firstAnswer.getFraction() != 0)
 			throw new MalformedQuestionException("Answer's fraction must be 0", this);
 		else if(!this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);

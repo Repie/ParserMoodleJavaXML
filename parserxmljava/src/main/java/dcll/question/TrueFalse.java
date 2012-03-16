@@ -2,7 +2,6 @@ package dcll.question;
 
 import java.util.ArrayList;
 
-import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -13,7 +12,7 @@ public class TrueFalse extends Question {
 	
 	//feedback opt
 
-	public TrueFalse(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
+	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		type = QuestionType.TRUEFALSE;
 		verify();
