@@ -22,7 +22,7 @@ public class Numerical extends Question{
 		verify();
 	}
 	
-	public Numerical(QuestionType type, String text, String name,
+	public Numerical(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {
@@ -31,7 +31,7 @@ public class Numerical extends Question{
 		verify();
 	}
 
-	public Numerical(QuestionType type, String text, String name,
+	public Numerical(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {

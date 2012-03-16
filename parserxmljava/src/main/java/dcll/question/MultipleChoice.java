@@ -36,7 +36,7 @@ public class MultipleChoice extends Question {
 		verify();
 	}
 
-	public MultipleChoice(QuestionType type, String text, String name,
+	public MultipleChoice(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, String correctAnswer,
@@ -58,7 +58,7 @@ public class MultipleChoice extends Question {
 	}
 	
 
-	public MultipleChoice(QuestionType type, String text, String name,
+	public MultipleChoice(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, float defaultGrade, float penalty,
@@ -83,7 +83,7 @@ public class MultipleChoice extends Question {
 	public Element parse(){
 		Element e = super.parse();
 		
-		Element e_shuffle = new Element("shyuffleanswer").setText(String.valueOf(shuffleAnswer));
+		Element e_shuffle = new Element("shyuffleanswer").setText(super.valueOf(shuffleAnswer));
 		Element e_single = new Element("single");
 		
 		if(single)

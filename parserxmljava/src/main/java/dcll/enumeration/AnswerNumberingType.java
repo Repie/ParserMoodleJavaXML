@@ -11,9 +11,11 @@ public enum AnswerNumberingType {
 		if(this.equals(A123))
 			return "123";
 		else if (this.equals(ABCD))
-			return this.toString();
+			return "ABCD";
+		else if (this.equals(ABC))
+			return "abc";
 		else
-			return this.toString().toLowerCase();
+			return "123";
 			
 	}
 }

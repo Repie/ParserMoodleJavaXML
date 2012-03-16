@@ -10,8 +10,6 @@ import dcll.exception.MalformedQuestionException;
 
 
 public class TrueFalse extends Question {
-	
-	//feedback opt
 
 	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
@@ -27,7 +25,7 @@ public class TrueFalse extends Question {
 		verify();
 	}
 	
-	public TrueFalse(QuestionType type, String text, String name,
+	public TrueFalse(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
@@ -43,10 +41,10 @@ public class TrueFalse extends Question {
 		else if(!this.hasOnlyOneCorrectAnswer())
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		else{
-			float firstFraction = ((RegularAnswer)answers.get(0)).getFraction();
-			float secondFraction = ((RegularAnswer)answers.get(1)).getFraction();
+			double firstFraction = ((RegularAnswer)answers.get(0)).getFraction();
+			double secondFraction = ((RegularAnswer)answers.get(1)).getFraction();
 			
-			if ((firstFraction == 0 && secondFraction == 100) || (firstFraction == 100 && secondFraction == 0))
+			if (!((firstFraction == 0 && secondFraction == 100) || (firstFraction == 100 && secondFraction == 0)))
 				throw new MalformedQuestionException("Fraction must be 0 and 100 only", this);
 			
 		}

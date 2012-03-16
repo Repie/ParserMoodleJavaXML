@@ -30,7 +30,7 @@ public class ShortAnswer extends Question {
 		verify();
 	}
 	
-	public ShortAnswer(QuestionType type, String text, String name, int usecase,
+	public ShortAnswer(String text, String name, int usecase,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
@@ -53,7 +53,7 @@ public class ShortAnswer extends Question {
 	public Element parse(){
 		Element e = super.parse();
 		
-		Element usecase = new Element("usecase").setText(String.valueOf(this.usecase));
+		Element usecase = new Element("usecase").setText(super.valueOf(this.usecase));
 		e.addContent(usecase);
 		
 		return e;

@@ -24,14 +24,14 @@ public class Description extends Question {
 		verify();
 	}
 
-	public Description(QuestionType type, String text, String name, float defaultGrade,
+	public Description(String text, String name, float defaultGrade,
 			float penalty, int hidden) throws MalformedQuestionException {
 		super( text, name, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
 		this.type = QuestionType.DESCRIPTION;
 		verify();
 	}
 
-	public Description(QuestionType type, String text, String name,
+	public Description(String text, String name,
 			String generalFeedback,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {
@@ -40,7 +40,7 @@ public class Description extends Question {
 		verify();
 	}
 
-	public Description(QuestionType type, String text, String name,
+	public Description(String text, String name,
 			String generalFeedback,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {

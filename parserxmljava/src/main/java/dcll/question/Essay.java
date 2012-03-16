@@ -12,22 +12,20 @@ import dcll.exception.MalformedQuestionException;
 
 public class Essay extends Question {
 	
-	//constructeur avec une seule RegularAnswer ?
-
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
 		super(text, answers, name, format);
 		this.type = QuestionType.ESSAY;
 		verify();
 	}
 	
-	public Essay(String text, RegularAnswer answer, String name, QuestionTextFormat format) throws MalformedQuestionException {
-		super(text, name, format);
-		ArrayList<Answer> temp = new ArrayList<Answer>();
-		temp.add(answer);
-		this.answers = temp;
-		this.type = QuestionType.ESSAY;
-		verify();
-	}
+//	public Essay(String text, RegularAnswer answer, String name, QuestionTextFormat format) throws MalformedQuestionException {
+//		super(text, name, format);
+//		ArrayList<Answer> temp = new ArrayList<Answer>();
+//		temp.add(answer);
+//		this.answers = temp;
+//		this.type = QuestionType.ESSAY;
+//		verify();
+//	}
 
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
 		super(text, answers, name);
@@ -35,17 +33,17 @@ public class Essay extends Question {
 		verify();
 	}
 	
-	public Essay(String text, RegularAnswer answer, String name) throws MalformedQuestionException {
-		super(text, name);
-		ArrayList<Answer> temp = new ArrayList<Answer>();
-		temp.add(answer);
-		this.answers = temp;
-		this.type = QuestionType.ESSAY;
-		verify();
-	}
+//	public Essay(String text, RegularAnswer answer, String name) throws MalformedQuestionException {
+//		super(text, name);
+//		ArrayList<Answer> temp = new ArrayList<Answer>();
+//		temp.add(answer);
+//		this.answers = temp;
+//		this.type = QuestionType.ESSAY;
+//		verify();
+//	}
 	
 	
-	public Essay(QuestionType type, String text, String name,
+	public Essay(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {

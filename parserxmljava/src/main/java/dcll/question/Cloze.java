@@ -24,7 +24,7 @@ public class Cloze extends Question {
 		verify();
 	}
 
-	public Cloze(QuestionType type, String text, String name,
+	public Cloze(String text, String name,
 			ArrayList<? extends Answer> answers, float defaultGrade,
 			float penalty, int hidden) throws MalformedQuestionException {
 		super( text, name, answers, defaultGrade, penalty, hidden);
@@ -34,7 +34,7 @@ public class Cloze extends Question {
 		verify();
 	}
 
-	public Cloze(QuestionType type, String text, String name,
+	public Cloze(String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {

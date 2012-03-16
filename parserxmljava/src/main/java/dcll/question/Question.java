@@ -129,7 +129,7 @@ public abstract class Question implements Parsable, Verifier{
 		boolean hundredFraction = false;
 		
 		for (int i = 0; i < answers.size(); i++){
-			float fraction = ((RegularAnswer)answers.get(i)).getFraction();
+			double fraction = ((RegularAnswer)answers.get(i)).getFraction();
 			
 			if(fraction == 100){
 				if (hundredFraction)
@@ -142,6 +142,16 @@ public abstract class Question implements Parsable, Verifier{
 		
 		return true;
 	}
+	
+	public static String valueOf(double x){
+		int integerX = (int) x;
+		
+		if(integerX == x)
+			return String.valueOf(integerX);
+		else
+			return String.valueOf(x);
+	}
+	
 	public Element parse(){
 		return parse(true);
 	}
@@ -150,42 +160,38 @@ public abstract class Question implements Parsable, Verifier{
 		Element q = new Element("question");
 		q.setAttribute("type", type.toString().toLowerCase());
 		
-		if(!name.isEmpty()) {
-			Element e_name = new Element("name");
-			Element e_text = new Element("text").setText(name);
-			e_name.addContent(e_text);
-			q.addContent(e_name);
-		}
+		Element e_name = new Element("name");
+		Element e_text = new Element("text").setText(name);
+		e_name.addContent(e_text);
+		q.addContent(e_name);
 		
 		Element q_text = new Element("questiontext");
 		
 		if(!format.equals(QuestionTextFormat.NONE))
 			q_text.setAttribute("format", format.toString().toLowerCase());
 		
-		Element e_text = new Element("text").setText(text);
-		q_text.addContent(e_text);
+		Element e_text2 = new Element("text").setText(text);
+		q_text.addContent(e_text2);
 		q.addContent(q_text);
 		
-		if(!generalFeedback.isEmpty()){
-			Element e_gfeed = new Element("generalfeedback");
-			Element e_gfeed_text = new Element("text").setText(generalFeedback);
-			e_gfeed.addContent(e_gfeed_text);
-			q.addContent(e_gfeed);
-		}
+		Element e_gfeed = new Element("generalfeedback");
+		Element e_gfeed_text = new Element("text").setText(generalFeedback);
+		e_gfeed.addContent(e_gfeed_text);
+		q.addContent(e_gfeed);
 		
-		Element e_grade = new Element("defaultgrade").setText(String.valueOf(defaultGrade));
+		Element e_grade = new Element("defaultgrade").setText(valueOf(defaultGrade));
 		q.addContent(e_grade);
 		
-		Element e_penalty = new Element("penalty").setText(String.valueOf(penalty));
+		Element e_penalty = new Element("penalty").setText(valueOf(penalty));
 		q.addContent(e_penalty);
 		
-		Element e_hidden = new Element("hidden").setText(String.valueOf(hidden));
+		Element e_hidden = new Element("hidden").setText(valueOf(hidden));
 		q.addContent(e_hidden);
 		
 		
 		
 		if(parseAnswer){
-			for(Answer a : answers) //normalement il faut au moins une answer (sinon exeption ?)
+			for(Answer a : answers) //normalement il faut au moins une answer pour tout sauf Cloze
 				q.addContent(a.parse());
 		}
 			

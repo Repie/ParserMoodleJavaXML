@@ -32,7 +32,7 @@ public class Matching extends Question {
 		verify();
 	}
 	
-	public Matching(QuestionType type, String text, String name, boolean shuffleAnswer,
+	public Matching(String text, String name, boolean shuffleAnswer,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
