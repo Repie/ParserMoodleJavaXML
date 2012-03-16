@@ -23,38 +23,42 @@ public abstract class Question implements Parsable, Verifier{
 	
 	//ajouter un constructeur pour les nouvelles balises dans les classes filles
 	
-	public Question(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
 		this.format = format;
+		this.type = type;
 	}
 	
-	public Question(String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
+		this.type = type;
 	}
 
 	
-	public Question(String text, String name, QuestionTextFormat format) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, String name, QuestionTextFormat format) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = new ArrayList<Answer>();
 		this.name = name;
 		this.format = format;
+		this.type = type;
 	}
 	
-	public Question(String text, String name) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, String name) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = new ArrayList<Answer>();
 		this.name = name;
+		this.type = type;
 	}
 	
-	public Question(String text, String name,
+	public Question(QuestionType type, String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
@@ -67,9 +71,10 @@ public abstract class Question implements Parsable, Verifier{
 		this.defaultGrade = defaultGrade;
 		this.penalty = penalty;
 		this.hidden = hidden;
+		this.type = type;
 	}
 	
-	public Question(String text, String name,
+	public Question(QuestionType type, String text, String name,
 			String generalFeedback, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
 		super();
@@ -80,9 +85,10 @@ public abstract class Question implements Parsable, Verifier{
 		this.defaultGrade = defaultGrade;
 		this.penalty = penalty;
 		this.hidden = hidden;
+		this.type = type;
 	}
 	
-	public Question(String text, String name, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
+	public Question(QuestionType type, String text, String name, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
 		super();
 		this.text = text;
@@ -92,6 +98,7 @@ public abstract class Question implements Parsable, Verifier{
 		this.defaultGrade = defaultGrade;
 		this.penalty = penalty;
 		this.hidden = hidden;
+		this.type = type;
 	}
 	
 
@@ -101,7 +108,7 @@ public abstract class Question implements Parsable, Verifier{
 
 
 	public String toString(){
-		return (name);
+		return (type.toString().toLowerCase() + " question \"" + name + "\"");
 	}
 	
 	public void verify() throws MalformedQuestionException{
@@ -109,30 +116,23 @@ public abstract class Question implements Parsable, Verifier{
 			throw new MalformedQuestionException("Hidden must be either 0 or 1", this);
 	}
 	
-	/*public void addAnswer(Answer a){
-		answers.add(a);
-	}
-	
-	public void addAnswers(ArrayList<Answer> answers){
-		this.answers.addAll(answers);
-	}*/
-
-	public boolean hasOnlyOneCorrectAnswer(){
-		boolean hundredFraction = false;
+	public int countCorrectAnswers(){
+		int correctAnswers = 0;
 		
 		for (int i = 0; i < answers.size(); i++){
 			double fraction = ((RegularAnswer)answers.get(i)).getFraction();
 			
-			if(fraction == 100){
-				if (hundredFraction)
-					return false;
-				else
-					hundredFraction = true;
-			}
-				
+			if(fraction == 100)
+				correctAnswers++;
 		}
 		
-		return true;
+		return correctAnswers;
+	}
+	
+
+
+	public boolean hasOnlyOneCorrectAnswer(){
+		return countCorrectAnswers() == 1;
 	}
 	
 	public static String valueOf(double x){

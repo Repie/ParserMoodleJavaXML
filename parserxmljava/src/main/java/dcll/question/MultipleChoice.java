@@ -23,7 +23,7 @@ public class MultipleChoice extends Question {
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, String correctAnswer,
 			String partialAnswer, String incorrectAnswer) throws MalformedQuestionException {
-		super(text, answers, name, format);
+		super(QuestionType.MULTICHOICE, text, answers, name, format);
 		this.shuffleAnswer = shuffleAnswer;
 		this.single = single;
 		this.answerNumbering = answerNumbering;
@@ -31,7 +31,7 @@ public class MultipleChoice extends Question {
 		this.partialAnswer = partialAnswer;
 		this.incorrectAnswer = incorrectAnswer;
 		
-		type = QuestionType.MULTICHOICE;
+		
 		
 		verify();
 	}
@@ -42,7 +42,7 @@ public class MultipleChoice extends Question {
 			AnswerNumberingType answerNumbering, String correctAnswer,
 			String partialAnswer, String incorrectAnswer, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super( text, name, generalFeedback, answers, format, defaultGrade,
+		super(QuestionType.MULTICHOICE,  text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		
 		this.shuffleAnswer = shuffleAnswer;
@@ -52,7 +52,7 @@ public class MultipleChoice extends Question {
 		this.partialAnswer = partialAnswer;
 		this.incorrectAnswer = incorrectAnswer;
 		
-		type = QuestionType.MULTICHOICE;
+		
 		
 		verify();
 	}
@@ -63,7 +63,7 @@ public class MultipleChoice extends Question {
 			QuestionTextFormat format, int shuffleAnswer, boolean single,
 			AnswerNumberingType answerNumbering, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super( text, name, generalFeedback, answers, format, defaultGrade,
+		super(QuestionType.MULTICHOICE,  text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
 		
 		this.shuffleAnswer = shuffleAnswer;
@@ -73,7 +73,23 @@ public class MultipleChoice extends Question {
 		this.partialAnswer = new String("");
 		this.incorrectAnswer = new String("");
 		
-		type = QuestionType.MULTICHOICE;
+		
+		
+		verify();
+	}
+	
+	public MultipleChoice(String text, String name, ArrayList<? extends Answer> answers, int shuffleAnswer, boolean single,
+			AnswerNumberingType answerNumbering) throws MalformedQuestionException {
+		super(QuestionType.MULTICHOICE,  text, answers, name);
+		
+		this.shuffleAnswer = shuffleAnswer;
+		this.single = single;
+		this.answerNumbering = answerNumbering;
+		this.correctAnswer = new String("");
+		this.partialAnswer = new String("");
+		this.incorrectAnswer = new String("");
+		
+		
 		
 		verify();
 	}
@@ -121,6 +137,8 @@ public class MultipleChoice extends Question {
 		
 		if(!(shuffleAnswer == 0 || shuffleAnswer == 1))
 			throw new MalformedQuestionException("Shuffle answer must be either 0 or 1", this);
+		else if(this.countCorrectAnswers() > 1)
+			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		
 	}
 

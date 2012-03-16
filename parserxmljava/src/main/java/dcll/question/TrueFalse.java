@@ -12,15 +12,15 @@ import dcll.exception.MalformedQuestionException;
 public class TrueFalse extends Question {
 
 	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
-		super(text, answers, name, format);
-		type = QuestionType.TRUEFALSE;
+		super(QuestionType.TRUEFALSE, text, answers, name, format);
+		
 		verify();
 	}
 
 
 	public TrueFalse(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
-		super(text, answers, name);
-		type = QuestionType.TRUEFALSE;
+		super(QuestionType.TRUEFALSE, text, answers, name);
+		
 		verify();
 	}
 	
@@ -28,9 +28,9 @@ public class TrueFalse extends Question {
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super( text, name, generalFeedback, answers, format, defaultGrade,
+		super(QuestionType.TRUEFALSE,  text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
-		type = QuestionType.TRUEFALSE;
+		
 		verify();
 	}
 	
@@ -39,7 +39,7 @@ public class TrueFalse extends Question {
 		
 		if(answers.size() != 2)
 			throw new MalformedQuestionException("Must have exactly 2 answers", this);
-		else if(!this.hasOnlyOneCorrectAnswer())
+		else if(this.countCorrectAnswers() > 1)
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		else{
 			double firstFraction = ((RegularAnswer)answers.get(0)).getFraction();

@@ -17,16 +17,16 @@ public class Matching extends Question {
 	protected boolean shuffleAnswer;
 
 	public Matching(String text, ArrayList<Subquestion> answers, String name, QuestionTextFormat format, boolean shuffleAnswer) throws MalformedQuestionException {
-		super(text, answers, name, format);
-		type = QuestionType.MATCHING;
+		super(QuestionType.MATCHING, text, answers, name, format);
+		
 		this.shuffleAnswer = shuffleAnswer;
 		
 		verify();
 	}
 
 	public Matching(String text, ArrayList<Subquestion> answers, String name, boolean shuffleAnswer) throws MalformedQuestionException {
-		super(text, answers, name);
-		type = QuestionType.MATCHING;
+		super(QuestionType.MATCHING, text, answers, name);
+		
 		this.shuffleAnswer = shuffleAnswer;
 		
 		verify();
@@ -36,9 +36,9 @@ public class Matching extends Question {
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super( text, name, generalFeedback, answers, format, defaultGrade,
+		super(QuestionType.MATCHING,  text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
-		type = QuestionType.MATCHING;
+		
 		this.shuffleAnswer = shuffleAnswer;
 		
 		verify();

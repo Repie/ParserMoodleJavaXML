@@ -21,6 +21,8 @@ import dcll.quiz.QuizWriter;
 
 public class CorrectQuestionCreation extends TestCase {
 	
+	//TESTER QUE LE RESULTAT EST CELUI ATTENDU
+	
 	public void testDescription() throws MalformedQuestionException {
 
 		Description d = new Description("Consigne dispositif électronique", "Ecrire un programme qui affiche Hello world", QuestionTextFormat.MOODLE_AUTO_FORMAT);

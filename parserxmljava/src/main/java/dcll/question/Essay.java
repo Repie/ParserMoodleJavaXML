@@ -13,32 +13,32 @@ import dcll.exception.MalformedQuestionException;
 public class Essay extends Question {
 	
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
-		super(text, answers, name, format);
-		this.type = QuestionType.ESSAY;
+		super(QuestionType.ESSAY, text, answers, name, format);
+		
 		verify();
 	}
 	
 //	public Essay(String text, RegularAnswer answer, String name, QuestionTextFormat format) throws MalformedQuestionException {
-//		super(text, name, format);
+//		super(QuestionType.ESSAY, text, name, format);
 //		ArrayList<Answer> temp = new ArrayList<Answer>();
 //		temp.add(answer);
 //		this.answers = temp;
-//		this.type = QuestionType.ESSAY;
+//		
 //		verify();
 //	}
 
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
-		super(text, answers, name);
-		this.type = QuestionType.ESSAY;
+		super(QuestionType.ESSAY, text, answers, name);
+		
 		verify();
 	}
 	
 //	public Essay(String text, RegularAnswer answer, String name) throws MalformedQuestionException {
-//		super(text, name);
+//		super(QuestionType.ESSAY, text, name);
 //		ArrayList<Answer> temp = new ArrayList<Answer>();
 //		temp.add(answer);
 //		this.answers = temp;
-//		this.type = QuestionType.ESSAY;
+//		
 //		verify();
 //	}
 	
@@ -47,9 +47,9 @@ public class Essay extends Question {
 			String generalFeedback, ArrayList<? extends Answer> answers,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super( text, name, generalFeedback, answers, format, defaultGrade,
+		super(QuestionType.ESSAY,  text, name, generalFeedback, answers, format, defaultGrade,
 				penalty, hidden);
-		this.type = QuestionType.ESSAY;
+		
 		verify();
 	}
 
@@ -64,8 +64,6 @@ public class Essay extends Question {
 			throw new MalformedQuestionException("Answer's text must be empty", this);
 		else if(firstAnswer.getFraction() != 0)
 			throw new MalformedQuestionException("Answer's fraction must be 0", this);
-		else if(!this.hasOnlyOneCorrectAnswer())
-			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		else if(format.equals(QuestionTextFormat.NONE))
 			throw new MalformedQuestionException("Question text format is void, use Cloze question in this case", this);
 	}

@@ -10,22 +10,22 @@ import dcll.exception.MalformedQuestionException;
 
 public class Description extends Question {
 	public Description(String text, String name, QuestionTextFormat format) throws MalformedQuestionException {
-		super(text, new ArrayList<Answer>(), name, format);
-		this.type = QuestionType.DESCRIPTION;
+		super(QuestionType.DESCRIPTION, text, new ArrayList<Answer>(), name, format);
+		
 		verify();
 	}
 
 	public Description(String text, String name) throws MalformedQuestionException {
-		super(text, new ArrayList<Answer>(), name);
-		this.type = QuestionType.DESCRIPTION;
+		super(QuestionType.DESCRIPTION, text, new ArrayList<Answer>(), name);
+		
 		
 		this.verify();
 	}
 
 	public Description(String text, String name, float defaultGrade,
 			float penalty, int hidden) throws MalformedQuestionException {
-		super( text, name, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
-		this.type = QuestionType.DESCRIPTION;
+		super(QuestionType.DESCRIPTION,  text, name, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
+		
 		verify();
 	}
 
@@ -33,8 +33,8 @@ public class Description extends Question {
 			String generalFeedback,
 			float defaultGrade, float penalty, int hidden)
 			throws MalformedQuestionException {
-		super( text, name, generalFeedback, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
-		this.type = QuestionType.DESCRIPTION;
+		super(QuestionType.DESCRIPTION,  text, name, generalFeedback, new ArrayList<Answer>(), defaultGrade, penalty, hidden);
+		
 		verify();
 	}
 
@@ -42,9 +42,9 @@ public class Description extends Question {
 			String generalFeedback,
 			QuestionTextFormat format, float defaultGrade, float penalty,
 			int hidden) throws MalformedQuestionException {
-		super( text, name, generalFeedback, new ArrayList<Answer>(), format, defaultGrade,
+		super(QuestionType.DESCRIPTION,  text, name, generalFeedback, new ArrayList<Answer>(), format, defaultGrade,
 				penalty, hidden);
-		this.type = QuestionType.DESCRIPTION;
+		
 		verify();
 	}
 
