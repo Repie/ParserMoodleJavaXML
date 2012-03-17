@@ -2,6 +2,8 @@ package dcll.question;
 
 import java.util.ArrayList;
 
+
+import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -9,31 +11,59 @@ import dcll.exception.MalformedQuestionException;
 
 
 public class Essay extends Question {
-
+	
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
-		super(text, answers, name, format);
-		this.type = QuestionType.ESSAY;
+		super(QuestionType.ESSAY, text, answers, name, format);
+		
 		verify();
 	}
+	
+//	public Essay(String text, RegularAnswer answer, String name, QuestionTextFormat format) throws MalformedQuestionException {
+//		super(QuestionType.ESSAY, text, name, format);
+//		ArrayList<Answer> temp = new ArrayList<Answer>();
+//		temp.add(answer);
+//		this.answers = temp;
+//		
+//		verify();
+//	}
 
 	public Essay(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
-		super(text, answers, name);
-		this.type = QuestionType.ESSAY;
+		super(QuestionType.ESSAY, text, answers, name);
+		
 		verify();
 	}
 	
+//	public Essay(String text, RegularAnswer answer, String name) throws MalformedQuestionException {
+//		super(QuestionType.ESSAY, text, name);
+//		ArrayList<Answer> temp = new ArrayList<Answer>();
+//		temp.add(answer);
+//		this.answers = temp;
+//		
+//		verify();
+//	}
 	
+	
+	public Essay(String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(QuestionType.ESSAY,  text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		
+		verify();
+	}
+
 	public void verify() throws MalformedQuestionException{
+		super.verify();
+		
 		RegularAnswer firstAnswer = (RegularAnswer) answers.get(0);
 		
-		if(answers.size() == 1)
+		if(answers.size() != 1)
 			throw new MalformedQuestionException("Must have only one answer", this);
-		else if(firstAnswer.getText().isEmpty())
+		else if(!firstAnswer.getText().isEmpty())
 			throw new MalformedQuestionException("Answer's text must be empty", this);
-		else if(firstAnswer.getFraction() == 0)
+		else if(firstAnswer.getFraction() != 0)
 			throw new MalformedQuestionException("Answer's fraction must be 0", this);
-		else if(!this.hasOnlyOneCorrectAnswer())
-			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		else if(format.equals(QuestionTextFormat.NONE))
 			throw new MalformedQuestionException("Question text format is void, use Cloze question in this case", this);
 	}

@@ -5,10 +5,10 @@ import org.jdom.Element;
 
 
 public class RegularAnswer extends Answer {
-	protected float fraction;
+	protected double fraction;
 	protected String feedback;
 	
-	public RegularAnswer(String text, int fraction, String feedback) {
+	public RegularAnswer(String text, double fraction, String feedback) {
 		super(text);
 		this.fraction = fraction;
 		this.feedback = feedback;
@@ -20,19 +20,19 @@ public class RegularAnswer extends Answer {
 		this.feedback = feedback;
 	}
 	
-	public RegularAnswer(String text, int fraction) {
+	public RegularAnswer(String text, double fraction) {
 		super(text);
 		this.fraction = fraction;
-		this.feedback = new String();
+		this.feedback = new String("");
 	}
 	
 	public RegularAnswer(String text, String fraction) {
 		super(text);
 		this.fraction = Integer.parseInt(fraction);
-		this.feedback = new String();
+		this.feedback = new String("");
 	}
 	
-	public float getFraction() {
+	public double getFraction() {
 		return fraction;
 	}
 

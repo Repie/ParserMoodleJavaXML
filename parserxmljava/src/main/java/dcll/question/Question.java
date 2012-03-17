@@ -14,63 +14,101 @@ import dcll.interfaces.*;
 
 public abstract class Question implements Parsable, Verifier{
 	protected QuestionType type;
-	protected String text, name, generalFeedback;
+	protected String text, name, generalFeedback = new String("");
 	protected ArrayList<? extends Answer> answers;
 	protected QuestionTextFormat format = QuestionTextFormat.HTML;
-	protected float defaultGrade, penalty;
-	protected int hidden;
+	protected float defaultGrade = 0;
+	protected float penalty = 0;
+	protected int hidden = 0;
 	
-	//ajouter un constructeur pour les nouvelles balises
+	//ajouter un constructeur pour les nouvelles balises dans les classes filles
 	
-	public Question(String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, ArrayList<? extends Answer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
 		this.format = format;
-		generalFeedback = new String();
-		defaultGrade = 1;
-		hidden = 0;
-		penalty = 0;
-		
-		verify();
+		this.type = type;
 	}
 	
-	public Question(String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, ArrayList<? extends Answer> answers, String name) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = answers;
 		this.name = name;
-		generalFeedback = new String();
-		defaultGrade = 1;
-		hidden = 0;
-		penalty = 0;
-		
-		verify();
+		this.type = type;
 	}
 
 	
-	public Question(String text, String name, QuestionTextFormat format) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, String name, QuestionTextFormat format) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = new ArrayList<Answer>();
 		this.name = name;
 		this.format = format;
-		
-		verify();
+		this.type = type;
 	}
 	
-	public Question(String text, String name) throws MalformedQuestionException  {
+	public Question(QuestionType type, String text, String name) throws MalformedQuestionException  {
 		super();
 		this.text = text;
 		this.answers = new ArrayList<Answer>();
 		this.name = name;
-		
-		verify();
+		this.type = type;
 	}
 	
+	public Question(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super();
+		this.text = text;
+		this.name = name;
+		this.generalFeedback = generalFeedback;
+		this.answers = answers;
+		this.format = format;
+		this.defaultGrade = defaultGrade;
+		this.penalty = penalty;
+		this.hidden = hidden;
+		this.type = type;
+	}
+	
+	public Question(QuestionType type, String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super();
+		this.text = text;
+		this.name = name;
+		this.generalFeedback = generalFeedback;
+		this.answers = answers;
+		this.defaultGrade = defaultGrade;
+		this.penalty = penalty;
+		this.hidden = hidden;
+		this.type = type;
+	}
+	
+	public Question(QuestionType type, String text, String name, ArrayList<? extends Answer> answers, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super();
+		this.text = text;
+		this.name = name;
+		this.generalFeedback = new String("");
+		this.answers = answers;
+		this.defaultGrade = defaultGrade;
+		this.penalty = penalty;
+		this.hidden = hidden;
+		this.type = type;
+	}
+	
+
+	public QuestionType getType(){
+		return type;
+	}
+
+
 	public String toString(){
-		return (name + " [" + type.toString().toLowerCase() + "]");
+		return (type.toString().toLowerCase() + " question \"" + name + "\"");
 	}
 	
 	public void verify() throws MalformedQuestionException{
@@ -78,31 +116,34 @@ public abstract class Question implements Parsable, Verifier{
 			throw new MalformedQuestionException("Hidden must be either 0 or 1", this);
 	}
 	
-	/*public void addAnswer(Answer a){
-		answers.add(a);
-	}
-	
-	public void addAnswers(ArrayList<Answer> answers){
-		this.answers.addAll(answers);
-	}*/
-
-	public boolean hasOnlyOneCorrectAnswer(){
-		boolean hundredFraction = false;
+	public int countCorrectAnswers(){
+		int correctAnswers = 0;
 		
 		for (int i = 0; i < answers.size(); i++){
-			float fraction = ((RegularAnswer)answers.get(i)).getFraction();
+			double fraction = ((RegularAnswer)answers.get(i)).getFraction();
 			
-			if(fraction == 100){
-				if (hundredFraction)
-					return false;
-				else
-					hundredFraction = true;
-			}
-				
+			if(fraction == 100)
+				correctAnswers++;
 		}
 		
-		return true;
+		return correctAnswers;
 	}
+	
+
+
+	public boolean hasOnlyOneCorrectAnswer(){
+		return countCorrectAnswers() == 1;
+	}
+	
+	public static String valueOf(double x){
+		int integerX = (int) x;
+		
+		if(integerX == x)
+			return String.valueOf(integerX);
+		else
+			return String.valueOf(x);
+	}
+	
 	public Element parse(){
 		return parse(true);
 	}
@@ -111,42 +152,38 @@ public abstract class Question implements Parsable, Verifier{
 		Element q = new Element("question");
 		q.setAttribute("type", type.toString().toLowerCase());
 		
-		if(!name.isEmpty()) {
-			Element e_name = new Element("name");
-			Element e_text = new Element("text").setText(name);
-			e_name.addContent(e_text);
-			q.addContent(e_name);
-		}
+		Element e_name = new Element("name");
+		Element e_text = new Element("text").setText(name);
+		e_name.addContent(e_text);
+		q.addContent(e_name);
 		
 		Element q_text = new Element("questiontext");
 		
 		if(!format.equals(QuestionTextFormat.NONE))
 			q_text.setAttribute("format", format.toString().toLowerCase());
 		
-		Element e_text = new Element("text").setText(text);
-		q_text.addContent(e_text);
+		Element e_text2 = new Element("text").setText(text);
+		q_text.addContent(e_text2);
 		q.addContent(q_text);
 		
-		if(!generalFeedback.isEmpty()){
-			Element e_gfeed = new Element("generalfeedback");
-			Element e_gfeed_text = new Element("text").setText(generalFeedback);
-			e_gfeed.addContent(e_gfeed_text);
-			q.addContent(e_gfeed);
-		}
+		Element e_gfeed = new Element("generalfeedback");
+		Element e_gfeed_text = new Element("text").setText(generalFeedback);
+		e_gfeed.addContent(e_gfeed_text);
+		q.addContent(e_gfeed);
 		
-		Element e_grade = new Element("defaultgrade").setText(String.valueOf(defaultGrade));
+		Element e_grade = new Element("defaultgrade").setText(valueOf(defaultGrade));
 		q.addContent(e_grade);
 		
-		Element e_penalty = new Element("penalty").setText(String.valueOf(penalty));
+		Element e_penalty = new Element("penalty").setText(valueOf(penalty));
 		q.addContent(e_penalty);
 		
-		Element e_hidden = new Element("hidden").setText(String.valueOf(penalty));
+		Element e_hidden = new Element("hidden").setText(valueOf(hidden));
 		q.addContent(e_hidden);
 		
 		
 		
 		if(parseAnswer){
-			for(Answer a : answers) //normalement il faut au moins une answer (sinon exeption ?)
+			for(Answer a : answers) //normalement il faut au moins une answer pour tout sauf Cloze
 				q.addContent(a.parse());
 		}
 			

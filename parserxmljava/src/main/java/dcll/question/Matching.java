@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.jdom.Element;
 
+import dcll.answer.Answer;
 import dcll.answer.Subquestion;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -12,19 +13,32 @@ import dcll.exception.MalformedQuestionException;
 
 
 public class Matching extends Question {
+
 	protected boolean shuffleAnswer;
 
 	public Matching(String text, ArrayList<Subquestion> answers, String name, QuestionTextFormat format, boolean shuffleAnswer) throws MalformedQuestionException {
-		super(text, answers, name, format);
-		type = QuestionType.MATCHING;
+		super(QuestionType.MATCHING, text, answers, name, format);
+		
 		this.shuffleAnswer = shuffleAnswer;
 		
 		verify();
 	}
 
 	public Matching(String text, ArrayList<Subquestion> answers, String name, boolean shuffleAnswer) throws MalformedQuestionException {
-		super(text, answers, name);
-		type = QuestionType.MATCHING;
+		super(QuestionType.MATCHING, text, answers, name);
+		
+		this.shuffleAnswer = shuffleAnswer;
+		
+		verify();
+	}
+	
+	public Matching(String text, String name, boolean shuffleAnswer,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(QuestionType.MATCHING,  text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		
 		this.shuffleAnswer = shuffleAnswer;
 		
 		verify();
@@ -51,6 +65,7 @@ public class Matching extends Question {
 	}
 
 	public void verify() throws MalformedQuestionException {
+		super.verify();
 		
 	}
 

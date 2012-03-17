@@ -5,11 +5,12 @@ import org.jdom.Element;
 
 
 public class Subquestion extends Answer {
-	public Subquestion(String text) {
-		super(text);
-	}
-
 	protected String answerText;
+	
+	public Subquestion(String text, String answerText) {
+		super(text);
+		this.answerText = answerText;
+	}
 
 	public Element parse() {
 		Element e = new Element("subquestion");

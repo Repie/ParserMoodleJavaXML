@@ -11,19 +11,41 @@ import dcll.exception.MalformedQuestionException;
 public class Numerical extends Question{
 
 	public Numerical(String text, ArrayList<RegularAnswer> answers, String name, QuestionTextFormat format) throws MalformedQuestionException {
-		super(text, answers, name, format);
-		this.type = QuestionType.NUMERICAL;
+		super(QuestionType.NUMERICAL, text, answers, name, format);
+		
 		verify();
 	}
 
 	public Numerical(String text, ArrayList<RegularAnswer> answers, String name) throws MalformedQuestionException {
-		super(text, answers, name);
-		this.type = QuestionType.NUMERICAL;
+		super(QuestionType.NUMERICAL, text, answers, name);
+		
 		verify();
 	}
 	
+	public Numerical(String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			float defaultGrade, float penalty, int hidden)
+			throws MalformedQuestionException {
+		super(QuestionType.NUMERICAL,  text, name, generalFeedback, answers, defaultGrade, penalty, hidden);
+		
+		verify();
+	}
+
+	public Numerical(String text, String name,
+			String generalFeedback, ArrayList<? extends Answer> answers,
+			QuestionTextFormat format, float defaultGrade, float penalty,
+			int hidden) throws MalformedQuestionException {
+		super(QuestionType.NUMERICAL,  text, name, generalFeedback, answers, format, defaultGrade,
+				penalty, hidden);
+		
+		verify();
+	}
+
 	public void verify() throws MalformedQuestionException{
-		if(!this.hasOnlyOneCorrectAnswer())
+		super.verify();
+		
+		
+		if(this.countCorrectAnswers() > 1)
 			throw new MalformedQuestionException("Can't have more than one correct answer, use ShortAnswer instead", this);
 		
 		for(Answer a : answers){
