@@ -1,12 +1,15 @@
 package dcll.parser;
 
 import dcll.interfaces.Xmltojava;
+import dcll.question.Question;
 import dcll.quiz.Quiz;
 
 import java.io.*;
 import org.jdom.*;
 import org.jdom.input.*;
 import org.jdom.filter.*;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
@@ -17,7 +20,7 @@ public class Xmltojavaparser implements Xmltojava {
 
 	public Quiz parse(String filename) {
 
-		// Instance of SAXBuilder' creation
+		// Instance of SAXBuilder's creation
 		SAXBuilder sxb = new SAXBuilder();
 		try {
 			// New JDOM documents with the filename of the xml
@@ -34,21 +37,24 @@ public class Xmltojavaparser implements Xmltojava {
 
 	public Quiz parseAll() {
 
-		// On crée une List contenant tous les noeuds "etudiant" de l'Element
-		// racine
-		List listEtudiants = racine.getChildren("etudiant");
+		// Creation of a list of all the children of the root
+		List listQuestion = racine.getChildren();
+		ArrayList<Question> lquest = new ArrayList<Question>();
 
-		// On crée un Iterator sur notre liste
-		Iterator i = listEtudiants.iterator();
+		// Creation of an iterator on our list
+		Iterator i = listQuestion.iterator();
 		while (i.hasNext()) {
-			// On recrée l'Element courant à chaque tour de boucle afin de
-			// pouvoir utiliser les méthodes propres aux Element comme :
-			// selectionner un noeud fils, modifier du texte, etc...
-			Element courant = (Element) i.next();
-			// On affiche le nom de l'element courant
-			System.out.println(courant.getChild("nom").getText());
+			//Parse of the current element to add it on the list of question
+			lquest.add(ParseQuestion((Element) i.next()));
 		}
 
-		return new Quiz();
+		return new Quiz(lquest);
+	}
+
+	private Question ParseQuestion(Element e) {
+		
+		// TODO Auto-generated method stub
+		//Looking for the type of question and treat it
+		return null;
 	}
 }
