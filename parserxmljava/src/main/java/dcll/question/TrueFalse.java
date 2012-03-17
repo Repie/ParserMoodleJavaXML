@@ -2,6 +2,8 @@ package dcll.question;
 
 import java.util.ArrayList;
 
+import org.jdom.Element;
+
 import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
 import dcll.enumeration.QuestionTextFormat;
@@ -34,6 +36,11 @@ public class TrueFalse extends Question {
 		verify();
 	}
 	
+	public TrueFalse(Element e) {
+		// TODO Auto-generated constructor stub
+	}
+
+
 	public void verify() throws MalformedQuestionException{
 		super.verify();
 		

@@ -2,6 +2,8 @@ package dcll.question;
 
 import java.util.ArrayList;
 
+import org.jdom.Element;
+
 
 import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
@@ -51,6 +53,10 @@ public class Essay extends Question {
 				penalty, hidden);
 		
 		verify();
+	}
+
+	public Essay(Element e) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public void verify() throws MalformedQuestionException{

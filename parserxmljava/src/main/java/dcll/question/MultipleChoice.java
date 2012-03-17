@@ -96,6 +96,10 @@ public class MultipleChoice extends Question {
 	
 
 
+	public MultipleChoice(Element e) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Element parse(){
 		Element e = super.parse();
 		

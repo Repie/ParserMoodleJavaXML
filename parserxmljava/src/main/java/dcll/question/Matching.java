@@ -44,6 +44,10 @@ public class Matching extends Question {
 		verify();
 	}
 	
+	public Matching(Element e) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Element parse(){
 		Element e = super.parse(false);
 		

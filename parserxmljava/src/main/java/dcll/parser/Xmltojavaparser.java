@@ -1,7 +1,7 @@
 package dcll.parser;
 
 import dcll.interfaces.Xmltojava;
-import dcll.question.Question;
+import dcll.question.*;
 import dcll.quiz.Quiz;
 
 import java.io.*;
@@ -38,7 +38,7 @@ public class Xmltojavaparser implements Xmltojava {
 	public Quiz parseAll() {
 
 		// Creation of a list of all the children of the root
-		List listQuestion = racine.getChildren();
+		List listQuestion = racine.getChildren("question");
 		ArrayList<Question> lquest = new ArrayList<Question>();
 
 		// Creation of an iterator on our list
@@ -53,8 +53,54 @@ public class Xmltojavaparser implements Xmltojava {
 
 	private Question ParseQuestion(Element e) {
 		
-		// TODO Auto-generated method stub
+		Question question = null;
+		// TODO Exception at the end
 		//Looking for the type of question and treat it
-		return null;
+		String type = new String(e.getAttributeValue("type"));
+		if(type.equals("cloze")){
+			
+			question = new Cloze(e);
+			
+		}
+		else if(type.equals("description")){
+			
+			question = new Description(e);
+			
+		}
+		else if(type.equals("essay")){
+			
+			question = new Essay(e);
+			
+		}
+		else if(type.equals("matching")){
+			
+			question = new Matching(e);
+			
+		}
+		else if(type.equals("multipleChoice")){
+			
+			question = new MultipleChoice(e);
+			
+		}
+		else if(type.equals("numerical")){
+			
+			question = new Numerical(e);
+			
+		}
+		else if(type.equals("shortanswer")){
+			
+			question = new ShortAnswer(e);
+			
+		}
+		else if(type.equals("truefalse")){
+			
+			question = new TrueFalse(e);
+			
+		}
+		else{
+			//Type of question unknown
+		}
+		
+		return question;
 	}
 }

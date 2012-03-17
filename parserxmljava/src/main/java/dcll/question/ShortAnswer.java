@@ -53,6 +53,10 @@ public class ShortAnswer extends Question {
 
 
 
+	public ShortAnswer(Element e) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public void verify() throws MalformedQuestionException {
 		super.verify();
 		
