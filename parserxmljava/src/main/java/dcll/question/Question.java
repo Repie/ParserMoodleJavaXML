@@ -20,6 +20,8 @@ public abstract class Question implements Parsable, Verifier{
 	protected float defaultGrade = 0;
 	protected float penalty = 0;
 	protected int hidden = 0;
+	protected String image = new String("");
+	protected String image_base64 = new String("");
 	
 	//ajouter un constructeur pour les nouvelles balises dans les classes filles
 	
@@ -131,6 +133,11 @@ public abstract class Question implements Parsable, Verifier{
 	
 
 
+	public void setImage(String image, String image_base64) {
+		this.image = image;
+		this.image_base64 = image_base64;
+	}
+
 	public boolean hasOnlyOneCorrectAnswer(){
 		return countCorrectAnswers() == 1;
 	}
@@ -165,6 +172,15 @@ public abstract class Question implements Parsable, Verifier{
 		Element e_text2 = new Element("text").setText(text);
 		q_text.addContent(e_text2);
 		q.addContent(q_text);
+		
+		Element e_img = new Element("image").setText(image);
+		
+		if(!image.isEmpty()){
+			Element e_img64 = new Element("image_base64").setText(image_base64);
+			e_img.addContent(e_img64);
+		}
+		
+		q.addContent(e_img);
 		
 		Element e_gfeed = new Element("generalfeedback");
 		Element e_gfeed_text = new Element("text").setText(generalFeedback);
