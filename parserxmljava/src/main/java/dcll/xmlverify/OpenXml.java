@@ -50,19 +50,20 @@ public class OpenXml implements dcll.interfaces.ConstantsTAG{
 		else {
 			
 			Element root = this.document.getRootElement();
-			if(root.getName().equals(ROOT_ELEMENT)) throw new XMLRootElementException();
+			if(!root.getName().equals(ROOT_ELEMENT)) throw new XMLRootElementException();
 			else{
 				verifiedQuiz = (Document) this.document.clone();
 				List <Element> questions = root.getChildren(); 
-				List <Element> intruders = null;
+				List <Element> intruders =new ArrayList<Element>();
 				int nbQuestions = 0;
 				for(Element question : questions){
 					if(question.getName().equals(QUESTION_ELEMENT)){
 						nbQuestions ++;
 					}
 					else{
-						verifiedQuiz.removeContent(question);
 						intruders.add(question);
+						verifiedQuiz.removeContent(question);
+						
 					}
 					
 				}
@@ -70,12 +71,10 @@ public class OpenXml implements dcll.interfaces.ConstantsTAG{
 				if(nbQuestions==0) throw new XMLNoQuestionsException();
 				
 				if(!intruders.isEmpty()){
-					createFileIntruders(this.xmlFile.getName(),intruders);
-									
+					createFileIntruders(this.xmlFile.getName(),intruders);									
 				}
 			} 
-			
-			
+				
 		}
 		
 		
@@ -85,7 +84,7 @@ public class OpenXml implements dcll.interfaces.ConstantsTAG{
 	
 	private void createFileIntruders(String nameFile, List<Element> intruders) {
 		// TODO Auto-generated method stub
-		String pathFile = System.getProperty("user.dir") + "\\IntrudersXML\\Intruders_"+nameFile;
+		String pathFile = System.getProperty("user.dir") + "\\IntrudersXML\\Intruders_"+nameFile.replace(".xml", ".txt");
 		try{
 			FileWriter fw = new FileWriter(pathFile, true);
 			BufferedWriter output = new BufferedWriter(fw);
@@ -107,12 +106,25 @@ public class OpenXml implements dcll.interfaces.ConstantsTAG{
 		}	
 	}
 
-/*	public static void main(String[] args ){
+	/*public static void main(String[] args ){
 		
-		OpenXml op=new OpenXml("Documents\\quizExamples\\quizExample_1.xml");
+		OpenXml op=new OpenXml("Documents\\quizExamples\\malformedQuiz_1.xml");
 		op.open();
+		try {
+			Document tost = op.checkedQuiz();
+		} catch (XMLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (XMLRootElementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (XMLNoQuestionsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		Element test = new Element("quiz");
-		String pathFile = System.getProperty("user.dir") + "\\IntrudersXML\\Intruders_"+op.xmlFile.getName();
+		String name = op.xmlFile.getName().replace(".xml", ".txt");
+		String pathFile = System.getProperty("user.dir") + "\\IntrudersXML\\Intruders_"+name;
 		System.out.println(pathFile);
 		
 		op.createFileIntruders(op.xmlFile.getName(),op.document.getRootElement().getChildren());
