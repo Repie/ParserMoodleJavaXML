@@ -6,7 +6,7 @@
     </category>
 </question>
 <!-- Quiz error is here -->
-<question>
+<falsequestion>
 <!-- Quiz error is here -->
  <answer fraction="100">
      <text>The correct answer</text>
@@ -23,5 +23,5 @@
  <shuffleanswers>1</shuffleanswers>
  <single>true</single>
  <answernumbering>abc</answernumbering>
- </question>
+ </falsequestion>
 </quiz>
