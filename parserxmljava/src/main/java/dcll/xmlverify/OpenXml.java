@@ -36,8 +36,15 @@ public class OpenXml {
 		}
 	}
 	
-/*	public static void main(String[] args ){
+	public org.jdom.Document checkedQuiz(){
+		org.jdom.Document verifiedQuiz=null;
 		
+		
+		
+		return verifiedQuiz;
+	}
+/*	public static void main(String[] args ){
+		;
 		OpenXml op=new OpenXml("Documents\\quizExamples\\quizExample_1.xml");
 		op.open();
 		System.out.println(op.document.toString());
