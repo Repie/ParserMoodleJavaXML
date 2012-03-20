@@ -41,6 +41,15 @@ public class NumericalAnswer extends RegularAnswer {
 		this.tolerance = tolerance;
 	}
 	
+	public NumericalAnswer(Element next) {
+		super(next);
+		
+		Element eTolerance = next.getChild("tolerance");
+		if(eTolerance!=null)
+			tolerance = Double.parseDouble(eTolerance.getText());
+		
+	}
+
 	public Element parse() {
 		Element a = new Element("answer");
 		a.setAttribute("fraction", String.valueOf(fraction));

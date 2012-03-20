@@ -32,6 +32,14 @@ public class RegularAnswer extends Answer {
 		this.feedback = new String("");
 	}
 	
+	public RegularAnswer(Element next) {
+		super(next);
+		fraction = Integer.valueOf(next.getAttributeValue("fraction")).intValue();
+		Element eFeedback = next.getChild("feedback");
+		if(eFeedback!=null)
+			feedback = eFeedback.getChildText("text");
+	}
+
 	public double getFraction() {
 		return fraction;
 	}

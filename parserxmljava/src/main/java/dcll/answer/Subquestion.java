@@ -12,6 +12,13 @@ public class Subquestion extends Answer {
 		this.answerText = answerText;
 	}
 
+	public Subquestion(Element next) {
+		super(next);
+		Element eAnswerText = next.getChild("answer");
+		if(eAnswerText!=null)
+			answerText = eAnswerText.getChildText("text");
+	}
+
 	public Element parse() {
 		Element e = new Element("subquestion");
 		
