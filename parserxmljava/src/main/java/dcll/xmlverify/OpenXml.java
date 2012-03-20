@@ -84,7 +84,7 @@ public class OpenXml implements dcll.interfaces.ConstantsTAG{
 	
 	private void createFileIntruders(String nameFile, List<Element> intruders) {
 		// TODO Auto-generated method stub
-		String pathFile = System.getProperty("user.dir") + "\\IntrudersXML\\Intruders_"+nameFile.replace(".xml", ".txt");
+		String pathFile = System.getProperty("user.dir") + "\\Documents\\IntrudersXML\\Intruders_"+nameFile.replace(".xml", ".txt");
 		try{
 			FileWriter fw = new FileWriter(pathFile, true);
 			BufferedWriter output = new BufferedWriter(fw);
@@ -124,7 +124,7 @@ public class OpenXml implements dcll.interfaces.ConstantsTAG{
 		} 
 		Element test = new Element("quiz");
 		String name = op.xmlFile.getName().replace(".xml", ".txt");
-		String pathFile = System.getProperty("user.dir") + "\\IntrudersXML\\Intruders_"+name;
+		String pathFile = System.getProperty("user.dir") + "\\Documents\\IntrudersXML\\Intruders_"+name;
 		System.out.println(pathFile);
 		
 		op.createFileIntruders(op.xmlFile.getName(),op.document.getRootElement().getChildren());
