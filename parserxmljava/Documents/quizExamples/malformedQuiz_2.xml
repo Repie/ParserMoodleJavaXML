@@ -1,10 +1,10 @@
 <?xml version="1.0" ?>
 <quiz>
- <question type="category">
+ <questione type="category">
     <category>
         <text>$course$/XXXX</text>
     </category>
-</question>
+</questione>
 <question type="multichoice">
  <answer fraction="100">
      <text>The correct answer</text>
@@ -20,7 +20,7 @@
      <text>Another distractor</text>
     <feedback><text>Ooops!</text></feedback>
  </answer>
- <shuffleanswers>1<shuffleanswers>
+ <shuffleanswers>1</shuffleanswers>
  <single>true</single>
  <answernumbering>abc</answernumbering>
  </question>
