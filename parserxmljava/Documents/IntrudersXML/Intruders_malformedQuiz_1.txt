@@ -1,0 +1,20 @@
+All the intruders of file : malformedQuiz_1.xml
+[Element: <falsequestion/>]
+
+
+ 
+     The correct answer
+    Correct!
+ 
+ 
+     A distractor
+    Ooops!
+ 
+ 
+     Another distractor
+    Ooops!
+ 
+ 1
+ true
+ abc
+ 

@@ -1,0 +1,7 @@
+All the intruders of file : malformedQuiz_2.xml
+[Element: <questione/>]
+
+    
+        $course$/XXXX
+    
+
