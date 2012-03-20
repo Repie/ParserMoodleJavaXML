@@ -60,6 +60,7 @@ public class Essay extends Question {
 
 	public Essay(Element e) {
 		super(e);
+		type = QuestionType.ESSAY;
 		// Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();

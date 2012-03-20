@@ -41,7 +41,7 @@ public class TrueFalse extends Question {
 
 	public TrueFalse(Element e) {
 		super(e);
-
+		type = QuestionType.TRUEFALSE;
 		// Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();

@@ -79,6 +79,7 @@ public class Cloze extends Question {
 
 	public Cloze(Element e) {
 		super(e);
+		type = QuestionType.CLOZE;
 		// Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();

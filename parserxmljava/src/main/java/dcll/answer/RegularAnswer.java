@@ -34,7 +34,7 @@ public class RegularAnswer extends Answer {
 	
 	public RegularAnswer(Element next) {
 		super(next);
-		fraction = Integer.valueOf(next.getAttributeValue("fraction")).intValue();
+		fraction = Double.parseDouble(next.getAttributeValue("fraction"));
 		Element eFeedback = next.getChild("feedback");
 		if(eFeedback!=null)
 			feedback = eFeedback.getChildText("text");

@@ -40,67 +40,62 @@ public class Xmltojavaparser implements Xmltojava {
 		// Creation of a list of all the children of the root
 		List listQuestion = racine.getChildren("question");
 		ArrayList<Question> lquest = new ArrayList<Question>();
-
+		Question temp;
 		// Creation of an iterator on our list
 		Iterator i = listQuestion.iterator();
 		while (i.hasNext()) {
-			//Parse of the current element to add it on the list of question
-			lquest.add(ParseQuestion((Element) i.next()));
+			// Parse of the current element to add it on the list of question
+			temp = ParseQuestion((Element) i.next());
+			if (temp != null)
+				lquest.add(temp);
 		}
 
 		return new Quiz(lquest);
 	}
 
 	private Question ParseQuestion(Element e) {
-		
+
 		Question question = null;
-		// TODO Exception at the end
-		//Looking for the type of question and treat it
+		// Looking for the type of question and treat it
 		String type = new String(e.getAttributeValue("type"));
-		if(type.equals("cloze")){
-			
+		if (type.equals("cloze")) {
+
 			question = new Cloze(e);
-			
-		}
-		else if(type.equals("description")){
-			
+
+		} else if (type.equals("description")) {
+
 			question = new Description(e);
-			
-		}
-		else if(type.equals("essay")){
-			
+
+		} else if (type.equals("essay")) {
+
 			question = new Essay(e);
-			
-		}
-		else if(type.equals("matching")){
-			
+
+		} else if (type.equals("matching")) {
+
 			question = new Matching(e);
-			
-		}
-		else if(type.equals("multipleChoice")){
-			
+
+		} else if (type.equals("multichoice")) {
+
 			question = new MultipleChoice(e);
-			
-		}
-		else if(type.equals("numerical")){
-			
+
+		} else if (type.equals("numerical")) {
+
 			question = new Numerical(e);
-			
-		}
-		else if(type.equals("shortanswer")){
-			
+
+		} else if (type.equals("shortanswer")) {
+
 			question = new ShortAnswer(e);
-			
-		}
-		else if(type.equals("truefalse")){
-			
+
+		} else if (type.equals("truefalse")) {
+
 			question = new TrueFalse(e);
-			
+
+		} else {
+			// Type of question unknown
+			System.out.println(type + " : Type de question pas encore pris en charge");
+
 		}
-		else{
-			//Type of question unknown
-		}
-		
+
 		return question;
 	}
 }

@@ -56,6 +56,7 @@ public class Description extends Question {
 
 	public Description(Element e) {
 		super(e);
+		type = QuestionType.DESCRIPTION;
 		// Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();

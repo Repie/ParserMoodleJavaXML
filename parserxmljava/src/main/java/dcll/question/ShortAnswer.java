@@ -58,6 +58,7 @@ public class ShortAnswer extends Question {
 
 	public ShortAnswer(Element e) {
 		super(e);
+		type = QuestionType.SHORTANSWER;
 		Element eUsecase = e.getChild("usecase");
 		if (eUsecase != null) {
 			usecase = Integer.parseInt(eUsecase.getText());

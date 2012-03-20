@@ -120,7 +120,7 @@ public abstract class Question implements Parsable, Verifier {
 		Element eGeneralFeedback = e.getChild("generalfeedback");
 		// Handling of the generalfeedback balise
 		if (eGeneralFeedback != null) {
-			generalFeedback = eGeneralFeedback.getText();
+			generalFeedback = eGeneralFeedback.getChildText("text");
 		}
 
 		Element eQuestionText = e.getChild("questiontext");
@@ -139,24 +139,26 @@ public abstract class Question implements Parsable, Verifier {
 				else
 					format = QuestionTextFormat.NONE;
 			}
+			else
+				format = QuestionTextFormat.NONE;
 		}
 
 		// Handling of the defaultgrade balise
 		Element eDefaultGrade = e.getChild("defaultgrade");
 		if (eDefaultGrade != null) {
-			defaultGrade = Float.valueOf(eDefaultGrade.getText()).floatValue();
+			defaultGrade = Float.parseFloat(eDefaultGrade.getText());
 		}
 
 		// Handling of the penalty balise
 		Element ePenalty = e.getChild("penalty");
 		if (ePenalty != null) {
-			penalty = Float.valueOf(ePenalty.getText()).floatValue();
+			penalty = Float.parseFloat(ePenalty.getText());
 		}
 
 		// Handling of the hidden balise
 		Element eHidden = e.getChild("hidden");
 		if (eHidden != null) {
-			hidden = Integer.valueOf(ePenalty.getText()).intValue();
+			hidden = Integer.parseInt(eHidden.getText());
 		}
 
 		// Handling of the image balise

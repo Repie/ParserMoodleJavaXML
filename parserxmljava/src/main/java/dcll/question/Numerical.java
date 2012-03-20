@@ -51,6 +51,7 @@ public class Numerical extends Question {
 
 	public Numerical(Element e) {
 		super(e);
+		type = QuestionType.NUMERICAL;
 		// Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();

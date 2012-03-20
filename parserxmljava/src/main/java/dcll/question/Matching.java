@@ -50,8 +50,9 @@ public class Matching extends Question {
 
 	public Matching(Element e) {
 		super(e);
+		type = QuestionType.MATCHING;
 		// Handling of the answer balise
-		List eAnswer = e.getChildren("answer");
+		List eAnswer = e.getChildren("subquestion");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();
 		Iterator i = eAnswer.iterator();
 		while (i.hasNext()) {

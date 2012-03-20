@@ -8,6 +8,7 @@ import org.jdom.Element;
 
 import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
+import dcll.answer.Subquestion;
 import dcll.enumeration.AnswerNumberingType;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
@@ -94,16 +95,22 @@ public class MultipleChoice extends Question {
 		
 		//Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
+		List eAnswer2 = e.getChildren("subquestion");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();
 		Iterator i = eAnswer.iterator();
+		Iterator j = eAnswer2.iterator();
 		while (i.hasNext()) {
 			//Parse of the current element to add it on the list of answer
 			lAnswer.add(new RegularAnswer((Element) i.next()));
 		}
+		while (j.hasNext()) {
+			//Parse of the current element to add it on the list of answer
+			lAnswer.add(new Subquestion((Element) i.next()));
+		}
 		answers=lAnswer;
 		
 		//Handling of shuffleAnswer
-		Element eShuffleAnswer = e.getChild("shuffleanswer");
+		Element eShuffleAnswer = e.getChild("shuffleanswers");
 		if (eShuffleAnswer != null) {
 			shuffleAnswer = Integer.valueOf(eShuffleAnswer.getText()).intValue();
 		}
@@ -120,9 +127,9 @@ public class MultipleChoice extends Question {
 				answerNumbering = AnswerNumberingType.NONE;
 			else if(temp.equals("abc"))
 				answerNumbering = AnswerNumberingType.ABC;
-			else if(temp.equals("abcd"))
+			else if(temp.equals("ABCD"))
 				answerNumbering = AnswerNumberingType.ABCD;
-			else if(temp.equals("a123"))
+			else if(temp.equals("123"))
 				answerNumbering = AnswerNumberingType.A123;
 			else
 				answerNumbering = AnswerNumberingType.NONE;
@@ -131,17 +138,17 @@ public class MultipleChoice extends Question {
 			answerNumbering = AnswerNumberingType.NONE;
 		
 		//Handling of correctAnswer
-		Element eCorrectAnswer = e.getChild("correctanswer");
+		Element eCorrectAnswer = e.getChild("correctfeedback");
 		if(eCorrectAnswer!=null){
 			correctAnswer = eCorrectAnswer.getText();
 		}
 		//Handling of partialAnswer
-		Element ePartialAnswer = e.getChild("partialanswer");
+		Element ePartialAnswer = e.getChild("partialfeedback");
 		if(ePartialAnswer!=null){
 			partialAnswer = ePartialAnswer.getText();
 		}
 		//Handling of incorrectAnswer
-		Element eIncorrectAnswer = e.getChild("incorrectanswer");
+		Element eIncorrectAnswer = e.getChild("incorrectfeedback");
 		if(eIncorrectAnswer!=null){
 			incorrectAnswer = eIncorrectAnswer.getText();
 		}
@@ -155,7 +162,7 @@ public class MultipleChoice extends Question {
 	public Element parse() {
 		Element e = super.parse();
 
-		Element e_shuffle = new Element("shyuffleanswer").setText(super
+		Element e_shuffle = new Element("shuffleanswers").setText(super
 				.valueOf(shuffleAnswer));
 		Element e_single = new Element("single");
 

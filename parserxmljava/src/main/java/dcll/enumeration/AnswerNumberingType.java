@@ -15,7 +15,7 @@ public enum AnswerNumberingType {
 		else if (this.equals(ABC))
 			return "abc";
 		else
-			return "123";
+			return "none";
 			
 	}
 }
