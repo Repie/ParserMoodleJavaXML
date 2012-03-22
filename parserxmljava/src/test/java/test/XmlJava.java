@@ -9,13 +9,13 @@ public class XmlJava extends TestCase {
 	
 		public void testSensxmljava() {
 			Xmltojavaparser x = new Xmltojavaparser();
-			x.parse("C:\\Users\\Julien\\Documents\\Cours\\DCLL\\Projet\\quiz.xml");
+			x.parse("Documents/quizExamples/quizmoodle.xml");
 		}
 		
 		public void testSensxmljavaxml() {
 			Xmltojavaparser x = new Xmltojavaparser();
 			JavatoXMLParser y = new JavatoXMLParser();
-			y.parse(x.parse("C:\\Users\\Julien\\Documents\\Cours\\DCLL\\Projet\\quizmoodle.xml"),"C:\\Users\\Julien\\Documents\\Cours\\DCLL\\Projet\\quizmoodlebis.xml");
+			y.parse(x.parse("Documents/quizExamples/quizmoodle.xml"),"Documents/quizExamples/quizmoodlebis.xml");
 
 		}
 
