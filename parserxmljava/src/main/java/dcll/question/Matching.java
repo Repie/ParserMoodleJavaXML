@@ -7,7 +7,6 @@ import java.util.List;
 import org.jdom.Element;
 
 import dcll.answer.Answer;
-import dcll.answer.RegularAnswer;
 import dcll.answer.Subquestion;
 import dcll.enumeration.QuestionTextFormat;
 import dcll.enumeration.QuestionType;
