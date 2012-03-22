@@ -1,4 +1,4 @@
-package dcll.xmlverify;
+package dcll.exception;
 
 public class XMLRootElementException extends Exception {
 

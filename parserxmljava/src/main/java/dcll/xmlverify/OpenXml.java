@@ -13,6 +13,10 @@ import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 
+import dcll.exception.XMLException;
+import dcll.exception.XMLNoQuestionsException;
+import dcll.exception.XMLRootElementException;
+
 /**
  * Class open a XMLFile
  * Check validity and wellform of XML file
