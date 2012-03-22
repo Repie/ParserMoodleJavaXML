@@ -21,6 +21,11 @@ public class Subquestion extends Answer {
 			answerText = eAnswerText.getChildText("text");
 	}
 
+	/**
+	 * Parse the balise of Subquestion type of moodle.
+	 * JDOM element's root have to be a subquestion balise
+	 * @param next
+	 */
 	public Element parse() {
 		Element e = new Element("subquestion");
 		

@@ -13,15 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Iterator;
 
+/**
+ * Implementation of the Xmltojava interface
+ * @author Julien
+ *
+ */
 public class Xmltojavaparser implements Xmltojava {
 
 	static org.jdom.Document document;
 	static Element racine;
 	
-	
-	/**
-	 * Implementation of the xmltojava function
-	 */
 	public Quiz parse(String filename) {
 
 		// Instance of SAXBuilder's creation
@@ -43,7 +44,7 @@ public class Xmltojavaparser implements Xmltojava {
 	 * Function handle the xml file
 	 * @return Quiz object
 	 */
-	public Quiz parseAll() {
+	private Quiz parseAll() {
 
 		// Creation of a list of all the children of the root
 		List listQuestion = racine.getChildren("question");

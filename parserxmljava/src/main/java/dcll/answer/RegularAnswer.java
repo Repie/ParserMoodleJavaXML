@@ -34,6 +34,11 @@ public class RegularAnswer extends Answer {
 		this.feedback = new String("");
 	}
 	
+	/**
+	 * Parse the balise of Answer type of moodle. This cllss represent the regular answer
+	 * JDOM element's root have to be a answer balise
+	 * @param next
+	 */
 	public RegularAnswer(Element next) {
 		super(next);
 		fraction = Double.parseDouble(next.getAttributeValue("fraction"));

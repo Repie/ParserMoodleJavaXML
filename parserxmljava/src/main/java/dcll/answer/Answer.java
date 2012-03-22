@@ -17,7 +17,7 @@ public abstract class Answer implements Parsable{
 	}
 
 	/**
-	 * Parse the balise of Answer type of moodle.
+	 * Parse the common balise to all Answer balise type of moodle.
 	 * JDOM element's root have to be a answer balise
 	 * @param next
 	 */

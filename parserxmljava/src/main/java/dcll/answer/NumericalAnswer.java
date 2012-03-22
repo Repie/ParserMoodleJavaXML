@@ -44,6 +44,11 @@ public class NumericalAnswer extends RegularAnswer {
 		this.tolerance = tolerance;
 	}
 	
+	/**
+	 * Parse the balise of NumericalAnswer type of moodle.
+	 * JDOM element's root have to be a answer balise
+	 * @param next
+	 */
 	public NumericalAnswer(Element next) {
 		super(next);
 		
