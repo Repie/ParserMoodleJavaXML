@@ -219,7 +219,7 @@ public abstract class Question implements Parsable, Verifier {
 	/**
 	 * Hides the decimals (ie ".0") if there are none
 	 */
-	public static String valueOf(double x) {
+	public static String valueOf(float x) {
 		int integerX = (int) x;
 
 		if (integerX == x)
