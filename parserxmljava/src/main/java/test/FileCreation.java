@@ -5,7 +5,9 @@ import dcll.exception.MalformedQuestionException;
 import dcll.parser.JavatoXMLParser;
 import dcll.quiz.Quiz;
 
-
+/**
+ * Test the parsing of a quiz into a file
+ */
 public class FileCreation extends TestCase {
 	public void testFileCreation() throws MalformedQuestionException{
 		Quiz q = new Quiz();

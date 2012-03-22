@@ -2,6 +2,7 @@ package test;
 
 import java.util.ArrayList;
 
+
 import junit.framework.TestCase;
 import dcll.answer.Answer;
 import dcll.answer.RegularAnswer;
@@ -16,6 +17,9 @@ import dcll.question.Numerical;
 import dcll.question.ShortAnswer;
 import dcll.question.TrueFalse;
 
+/**
+ * Test the incorrect creation of every question
+ */
 public class IncorrectQuestionCreation extends TestCase {
 	
 	public void testQuestion(){

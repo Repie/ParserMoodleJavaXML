@@ -19,9 +19,10 @@ import dcll.question.ShortAnswer;
 import dcll.question.TrueFalse;
 import dcll.quiz.QuizWriter;
 
+/**
+ * Test the correct creation of every question
+ */
 public class CorrectQuestionCreation extends TestCase {
-	
-	//TESTER QUE LE RESULTAT EST CELUI ATTENDU
 	
 	public void testDescription() throws MalformedQuestionException {
 

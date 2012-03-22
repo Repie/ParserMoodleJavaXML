@@ -9,6 +9,9 @@ import dcll.enumeration.*;
 import dcll.exception.MalformedQuestionException;
 import dcll.interfaces.*;
 
+/**
+ * Abstract question mother class containing what's common to all questions
+ */
 public abstract class Question implements Parsable, Verifier {
 	protected QuestionType type;
 	protected String text, name, generalFeedback = new String("");
@@ -194,6 +197,9 @@ public abstract class Question implements Parsable, Verifier {
 					"Hidden must be either 0 or 1", this);
 	}
 
+	/**
+	 * Returns the number of correct answers (ie. with a fraction value of 100) 
+	 */
 	public int countCorrectAnswers() {
 		int correctAnswers = 0;
 
@@ -216,7 +222,10 @@ public abstract class Question implements Parsable, Verifier {
 		return countCorrectAnswers() == 1;
 	}
 
-	public static String valueOf(double x) {
+	/**
+	 * Hides the decimals (ie ".0") if there are none
+	 */
+	public static String valueOf(float x) {
 		int integerX = (int) x;
 
 		if (integerX == x)

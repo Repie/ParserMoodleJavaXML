@@ -3,7 +3,9 @@ package dcll.answer;
 import org.jdom.Element;
 
 
-
+/**
+ * Answers used by moste questions
+ */
 public class RegularAnswer extends Answer {
 	protected double fraction;
 	protected String feedback;

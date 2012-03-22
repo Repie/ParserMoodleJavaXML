@@ -2,6 +2,9 @@ package dcll.answer;
 
 import org.jdom.Element;
 
+/**
+ * Answers used by Numerical questions
+ */
 public class NumericalAnswer extends RegularAnswer {
 	protected double tolerance = 0;
 

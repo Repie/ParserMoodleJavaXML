@@ -10,6 +10,9 @@ import org.jdom.output.XMLOutputter;
 
 import dcll.interfaces.Parsable;
 
+/**
+ * Write a quiz into a file or on screen
+ */
 public class QuizWriter {	
 	protected Quiz quiz;
 	
@@ -29,6 +32,9 @@ public class QuizWriter {
 		return generateDocument(quiz);
 	}
 	
+	/**
+	 * Returns a JDom Document containing the quiz
+	 */
 	public static Document generateDocument(Quiz q){
 		return new Document(q.parse());
 	}
@@ -45,6 +51,9 @@ public class QuizWriter {
 		write(new Document(e));
 	}
 	
+	/**
+	 * Print a document on the screen
+	 */
 	public static void write(Document doc){
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		
@@ -55,6 +64,9 @@ public class QuizWriter {
 		}
 	}
 	
+	/**
+	 * Print a document in a file
+	 */
 	public static void write(Document doc, Writer out){
 		XMLOutputter outputter = new XMLOutputter(Format.getPrettyFormat());
 		
