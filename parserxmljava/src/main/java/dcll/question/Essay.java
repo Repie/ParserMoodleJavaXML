@@ -58,6 +58,11 @@ public class Essay extends Question {
 		verify();
 	}
 
+	/**
+	 * Parse the specific balise of Essay question type of moodle.
+	 * JDOM element's root have to be a question balise
+	 * @param e
+	 */
 	public Essay(Element e) {
 		super(e);
 		type = QuestionType.ESSAY;

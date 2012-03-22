@@ -54,6 +54,11 @@ public class Description extends Question {
 		verify();
 	}
 
+	/**
+	 * Parse the specific balise of Description question type of moodle.
+	 * JDOM element's root have to be a question balise
+	 * @param e
+	 */
 	public Description(Element e) {
 		super(e);
 		type = QuestionType.DESCRIPTION;

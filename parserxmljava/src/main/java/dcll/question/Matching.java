@@ -48,6 +48,11 @@ public class Matching extends Question {
 		verify();
 	}
 
+	/**
+	 * Parse the specific balise of Matching question type of moodle.
+	 * JDOM element's root have to be a question balise
+	 * @param e
+	 */
 	public Matching(Element e) {
 		super(e);
 		type = QuestionType.MATCHING;

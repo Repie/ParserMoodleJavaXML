@@ -56,6 +56,11 @@ public class ShortAnswer extends Question {
 		verify();
 	}
 
+	/**
+	 * Parse the specific balise of Shortanswer question type of moodle.
+	 * JDOM element's root have to be a question balise
+	 * @param e
+	 */
 	public ShortAnswer(Element e) {
 		super(e);
 		type = QuestionType.SHORTANSWER;

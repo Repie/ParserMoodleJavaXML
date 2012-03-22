@@ -89,6 +89,11 @@ public class MultipleChoice extends Question {
 		verify();
 	}
 
+	/**
+	 * Parse the specific balise of Multichoice question type of moodle.
+	 * JDOM element's root have to be a question balise
+	 * @param e
+	 */
 	public MultipleChoice(Element e) {
 		super(e);
 		type = QuestionType.MULTICHOICE;

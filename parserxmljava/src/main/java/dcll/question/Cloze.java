@@ -77,6 +77,11 @@ public class Cloze extends Question {
 		verify();
 	}
 
+	/**
+	 * Parse the specific balise of Cloze question type of moodle.
+	 * JDOM element's root have to be a question balise
+	 * @param e
+	 */
 	public Cloze(Element e) {
 		super(e);
 		type = QuestionType.CLOZE;

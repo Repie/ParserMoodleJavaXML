@@ -17,7 +17,11 @@ public class Xmltojavaparser implements Xmltojava {
 
 	static org.jdom.Document document;
 	static Element racine;
-
+	
+	
+	/**
+	 * Implementation of the xmltojava function
+	 */
 	public Quiz parse(String filename) {
 
 		// Instance of SAXBuilder's creation
@@ -35,6 +39,10 @@ public class Xmltojavaparser implements Xmltojava {
 		return parseAll();
 	}
 
+	/**
+	 * Function handle the xml file
+	 * @return Quiz object
+	 */
 	public Quiz parseAll() {
 
 		// Creation of a list of all the children of the root
@@ -53,6 +61,11 @@ public class Xmltojavaparser implements Xmltojava {
 		return new Quiz(lquest);
 	}
 
+	/**
+	 * Parse JDOM's Element to Question. The element root must be a question's balise
+	 * @param e
+	 * @return Question parsed
+	 */
 	private Question ParseQuestion(Element e) {
 
 		Question question = null;

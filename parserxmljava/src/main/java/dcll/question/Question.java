@@ -108,6 +108,12 @@ public abstract class Question implements Parsable, Verifier {
 		this.type = type;
 	}
 
+	/**
+	 * Parse a JDOM's Element to Question.
+	 * This constructor only parse the common balises to all Question type except answer balise.
+	 * The Element root have to be a question's balise
+	 * @param e
+	 */
 	public Question(Element e) {
 		String formatQuestion;
 
