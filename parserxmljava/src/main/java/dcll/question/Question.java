@@ -112,9 +112,10 @@ public abstract class Question implements Parsable, Verifier {
 	}
 
 	/**
-	 * Parse a JDOM's Element to Question.
-	 * This constructor only parse the common balises to all Question type except answer balise.
-	 * The Element root have to be a question's balise
+	 * Parse a JDOM's Element to Question. This constructor only parse the
+	 * common balises to all Question type except answer balise. The Element
+	 * root have to be a question's balise
+	 * 
 	 * @param e
 	 */
 	public Question(Element e) {
@@ -147,8 +148,7 @@ public abstract class Question implements Parsable, Verifier {
 					format = QuestionTextFormat.MARKDOWN;
 				else
 					format = QuestionTextFormat.NONE;
-			}
-			else
+			} else
 				format = QuestionTextFormat.NONE;
 		}
 
@@ -198,7 +198,7 @@ public abstract class Question implements Parsable, Verifier {
 	}
 
 	/**
-	 * Returns the number of correct answers (ie. with a fraction value of 100) 
+	 * Returns the number of correct answers (ie. with a fraction value of 100)
 	 */
 	public int countCorrectAnswers() {
 		int correctAnswers = 0;

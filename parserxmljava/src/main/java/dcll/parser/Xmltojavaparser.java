@@ -15,14 +15,15 @@ import java.util.Iterator;
 
 /**
  * Implementation of the Xmltojava interface
+ * 
  * @author Julien
- *
+ * 
  */
 public class Xmltojavaparser implements Xmltojava {
 
 	static org.jdom.Document document;
 	static Element racine;
-	
+
 	public Quiz parse(String filename) {
 
 		// Instance of SAXBuilder's creation
@@ -31,6 +32,7 @@ public class Xmltojavaparser implements Xmltojava {
 			// New JDOM documents with the filename of the xml
 			document = sxb.build(new File(filename));
 		} catch (Exception e) {
+			System.err.println("couldn't open file");
 		}
 
 		// Initialisation of a new element root with the root element of the
@@ -42,6 +44,7 @@ public class Xmltojavaparser implements Xmltojava {
 
 	/**
 	 * Function handle the xml file
+	 * 
 	 * @return Quiz object
 	 */
 	private Quiz parseAll() {
@@ -63,7 +66,9 @@ public class Xmltojavaparser implements Xmltojava {
 	}
 
 	/**
-	 * Parse JDOM's Element to Question. The element root must be a question's balise
+	 * Parse JDOM's Element to Question. The element root must be a question's
+	 * balise
+	 * 
 	 * @param e
 	 * @return Question parsed
 	 */
@@ -106,7 +111,8 @@ public class Xmltojavaparser implements Xmltojava {
 
 		} else {
 			// Type of question unknown
-			System.out.println(type + " : Type de question pas encore pris en charge");
+			System.out.println(type
+					+ " : Type de question pas encore pris en charge");
 
 		}
 

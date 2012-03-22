@@ -90,78 +90,75 @@ public class MultipleChoice extends Question {
 	}
 
 	/**
-	 * Parse the specific balise of Multichoice question type of moodle.
-	 * JDOM element's root have to be a question balise
+	 * Parse the specific balise of Multichoice question type of moodle. JDOM
+	 * element's root have to be a question balise
+	 * 
 	 * @param e
 	 */
 	public MultipleChoice(Element e) {
 		super(e);
 		type = QuestionType.MULTICHOICE;
-		
-		//Handling of the answer balise
+
+		// Handling of the answer balise
 		List eAnswer = e.getChildren("answer");
 		List eAnswer2 = e.getChildren("subquestion");
 		ArrayList<Answer> lAnswer = new ArrayList<Answer>();
 		Iterator i = eAnswer.iterator();
 		Iterator j = eAnswer2.iterator();
 		while (i.hasNext()) {
-			//Parse of the current element to add it on the list of answer
+			// Parse of the current element to add it on the list of answer
 			lAnswer.add(new RegularAnswer((Element) i.next()));
 		}
 		while (j.hasNext()) {
-			//Parse of the current element to add it on the list of answer
+			// Parse of the current element to add it on the list of answer
 			lAnswer.add(new Subquestion((Element) i.next()));
 		}
-		answers=lAnswer;
-		
-		//Handling of shuffleAnswer
+		answers = lAnswer;
+
+		// Handling of shuffleAnswer
 		Element eShuffleAnswer = e.getChild("shuffleanswers");
 		if (eShuffleAnswer != null) {
-			shuffleAnswer = Integer.valueOf(eShuffleAnswer.getText()).intValue();
+			shuffleAnswer = Integer.valueOf(eShuffleAnswer.getText())
+					.intValue();
 		}
-		//Handling of single
+		// Handling of single
 		Element eSingle = e.getChild("single");
 		if (eSingle != null) {
 			single = Boolean.valueOf(eSingle.getText()).booleanValue();
 		}
-		//Handling of AnswerNumberingType answerNumbering
+		// Handling of AnswerNumberingType answerNumbering
 		Element eAnswerNumberingType = e.getChild("answernumbering");
-		if(eAnswerNumberingType!=null){
+		if (eAnswerNumberingType != null) {
 			String temp = eAnswerNumberingType.getText();
-			if(temp.equals("none"))
+			if (temp.equals("none"))
 				answerNumbering = AnswerNumberingType.NONE;
-			else if(temp.equals("abc"))
+			else if (temp.equals("abc"))
 				answerNumbering = AnswerNumberingType.ABC;
-			else if(temp.equals("ABCD"))
+			else if (temp.equals("ABCD"))
 				answerNumbering = AnswerNumberingType.ABCD;
-			else if(temp.equals("123"))
+			else if (temp.equals("123"))
 				answerNumbering = AnswerNumberingType.A123;
 			else
 				answerNumbering = AnswerNumberingType.NONE;
-		}
-		else
+		} else
 			answerNumbering = AnswerNumberingType.NONE;
-		
-		//Handling of correctAnswer
+
+		// Handling of correctAnswer
 		Element eCorrectAnswer = e.getChild("correctfeedback");
-		if(eCorrectAnswer!=null){
+		if (eCorrectAnswer != null) {
 			correctAnswer = eCorrectAnswer.getText();
 		}
-		//Handling of partialAnswer
+		// Handling of partialAnswer
 		Element ePartialAnswer = e.getChild("partialfeedback");
-		if(ePartialAnswer!=null){
+		if (ePartialAnswer != null) {
 			partialAnswer = ePartialAnswer.getText();
 		}
-		//Handling of incorrectAnswer
+		// Handling of incorrectAnswer
 		Element eIncorrectAnswer = e.getChild("incorrectfeedback");
-		if(eIncorrectAnswer!=null){
+		if (eIncorrectAnswer != null) {
 			incorrectAnswer = eIncorrectAnswer.getText();
 		}
-		
-		
-		
-			
-			
+
 	}
 
 	public Element parse() {

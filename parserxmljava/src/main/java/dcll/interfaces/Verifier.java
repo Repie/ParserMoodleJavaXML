@@ -6,6 +6,6 @@ public interface Verifier {
 	/**
 	 * Verify that a question is well formed
 	 */
-	public void verify() throws MalformedQuestionException; 
+	public void verify() throws MalformedQuestionException;
 
 }

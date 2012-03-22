@@ -55,8 +55,9 @@ public class Description extends Question {
 	}
 
 	/**
-	 * Parse the specific balise of Description question type of moodle.
-	 * JDOM element's root have to be a question balise
+	 * Parse the specific balise of Description question type of moodle. JDOM
+	 * element's root have to be a question balise
+	 * 
 	 * @param e
 	 */
 	public Description(Element e) {

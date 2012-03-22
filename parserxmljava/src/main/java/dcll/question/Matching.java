@@ -48,8 +48,9 @@ public class Matching extends Question {
 	}
 
 	/**
-	 * Parse the specific balise of Matching question type of moodle.
-	 * JDOM element's root have to be a question balise
+	 * Parse the specific balise of Matching question type of moodle. JDOM
+	 * element's root have to be a question balise
+	 * 
 	 * @param e
 	 */
 	public Matching(Element e) {
@@ -64,10 +65,11 @@ public class Matching extends Question {
 			lAnswer.add(new Subquestion((Element) i.next()));
 		}
 		answers = lAnswer;
-		//Handling of shuffleAnswer
+		// Handling of shuffleAnswer
 		Element eShuffleAnswer = e.getChild("shuffleanswer");
 		if (eShuffleAnswer != null) {
-			shuffleAnswer = Boolean.valueOf(eShuffleAnswer.getText()).booleanValue();
+			shuffleAnswer = Boolean.valueOf(eShuffleAnswer.getText())
+					.booleanValue();
 		}
 	}
 

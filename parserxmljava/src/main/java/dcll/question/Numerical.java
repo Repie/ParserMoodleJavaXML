@@ -50,8 +50,9 @@ public class Numerical extends Question {
 	}
 
 	/**
-	 * Parse the specific balise of Numerical question type of moodle.
-	 * JDOM element's root have to be a question balise
+	 * Parse the specific balise of Numerical question type of moodle. JDOM
+	 * element's root have to be a question balise
+	 * 
 	 * @param e
 	 */
 	public Numerical(Element e) {

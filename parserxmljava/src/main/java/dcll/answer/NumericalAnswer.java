@@ -23,8 +23,9 @@ public class NumericalAnswer extends RegularAnswer {
 	public NumericalAnswer(String text, String fraction) {
 		super(text, fraction);
 	}
-	
-	public NumericalAnswer(String text, double fraction, String feedback, double tolerance) {
+
+	public NumericalAnswer(String text, double fraction, String feedback,
+			double tolerance) {
 		super(text, fraction, feedback);
 		this.tolerance = tolerance;
 	}
@@ -34,7 +35,8 @@ public class NumericalAnswer extends RegularAnswer {
 		this.tolerance = tolerance;
 	}
 
-	public NumericalAnswer(String text, String fraction, String feedback, double tolerance) {
+	public NumericalAnswer(String text, String fraction, String feedback,
+			double tolerance) {
 		super(text, fraction, feedback);
 		this.tolerance = tolerance;
 	}
@@ -43,38 +45,40 @@ public class NumericalAnswer extends RegularAnswer {
 		super(text, fraction);
 		this.tolerance = tolerance;
 	}
-	
+
 	/**
-	 * Parse the balise of NumericalAnswer type of moodle.
-	 * JDOM element's root have to be a answer balise
+	 * Parse the balise of NumericalAnswer type of moodle. JDOM element's root
+	 * have to be a answer balise
+	 * 
 	 * @param next
 	 */
 	public NumericalAnswer(Element next) {
 		super(next);
-		
+
 		Element eTolerance = next.getChild("tolerance");
-		if(eTolerance!=null)
+		if (eTolerance != null)
 			tolerance = Double.parseDouble(eTolerance.getText());
-		
+
 	}
 
 	public Element parse() {
 		Element a = new Element("answer");
 		a.setAttribute("fraction", String.valueOf(fraction));
-		
+
 		Element e_text = new Element("text").setText(text);
 		a.addContent(e_text);
-		
-		Element e_tol = new Element("tolerance").setText(String.valueOf(tolerance));
+
+		Element e_tol = new Element("tolerance").setText(String
+				.valueOf(tolerance));
 		a.addContent(e_tol);
-		
-		if(!feedback.isEmpty()){
+
+		if (!feedback.isEmpty()) {
 			Element e_feedb = new Element("feedback");
 			Element e_feed_text = new Element("text").setText(feedback);
 			e_feedb.addContent(e_feed_text);
 			a.addContent(e_feedb);
 		}
-		
+
 		return a;
 	}
 

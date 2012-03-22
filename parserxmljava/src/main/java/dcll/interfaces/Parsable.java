@@ -7,7 +7,7 @@ import org.jdom.Element;
  */
 public interface Parsable {
 	/**
-	 * Returns the corresponding JDom Element 
+	 * Returns the corresponding JDom Element
 	 */
 	Element parse();
 }

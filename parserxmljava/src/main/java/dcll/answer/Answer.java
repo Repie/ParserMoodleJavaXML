@@ -7,18 +7,19 @@ import dcll.interfaces.Parsable;
 /**
  * Abstract mother answer class containing what's common to all answers
  */
-public abstract class Answer implements Parsable{
+public abstract class Answer implements Parsable {
 	protected String text;
 
-	public Answer(String text){
+	public Answer(String text) {
 		super();
-		
+
 		this.text = text;
 	}
 
 	/**
-	 * Parse the common balise to all Answer balise type of moodle.
-	 * JDOM element's root have to be a answer balise
+	 * Parse the common balise to all Answer balise type of moodle. JDOM
+	 * element's root have to be a answer balise
+	 * 
 	 * @param next
 	 */
 	public Answer(Element next) {

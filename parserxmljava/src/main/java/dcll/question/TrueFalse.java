@@ -40,8 +40,9 @@ public class TrueFalse extends Question {
 	}
 
 	/**
-	 * Parse the specific balise of Truefalse question type of moodle.
-	 * JDOM element's root have to be a question balise
+	 * Parse the specific balise of Truefalse question type of moodle. JDOM
+	 * element's root have to be a question balise
+	 * 
 	 * @param e
 	 */
 	public TrueFalse(Element e) {
