@@ -3,7 +3,9 @@ package dcll.answer;
 import org.jdom.Element;
 
 
-
+/**
+ * Answers used by the Matching questions
+ */
 public class Subquestion extends Answer {
 	protected String answerText;
 	

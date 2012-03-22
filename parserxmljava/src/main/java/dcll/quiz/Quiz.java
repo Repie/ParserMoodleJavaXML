@@ -7,7 +7,9 @@ import dcll.interfaces.Parsable;
 import dcll.question.Question;
 
 
-
+/**
+ * Moodle Quiz containing various questions
+ */
 public class Quiz implements Parsable{
 	protected ArrayList<Question> questions;
 	
