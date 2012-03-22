@@ -93,9 +93,4 @@ public class Matching extends Question {
 		return e;
 	}
 
-	public void verify() throws MalformedQuestionException {
-		super.verify();
-
-	}
-
 }
